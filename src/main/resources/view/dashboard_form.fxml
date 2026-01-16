@@ -1,0 +1,79 @@
+<?xml version="1.0" encoding="UTF-8"?>
+
+<?import com.jfoenix.controls.JFXButton?>
+<?import javafx.scene.control.Label?>
+<?import javafx.scene.effect.DropShadow?>
+<?import javafx.scene.layout.AnchorPane?>
+<?import javafx.scene.paint.Color?>
+<?import javafx.scene.paint.LinearGradient?>
+<?import javafx.scene.paint.Stop?>
+<?import javafx.scene.shape.Rectangle?>
+<?import javafx.scene.text.Font?>
+
+
+<AnchorPane prefHeight="400.0" prefWidth="600.0" xmlns="http://javafx.com/javafx/25" xmlns:fx="http://javafx.com/fxml/1" fx:controller="controller.DashboardFormController">
+   <children>
+      <Rectangle arcHeight="5.0" arcWidth="5.0" height="89.0" layoutX="14.0" layoutY="14.0" stroke="BLACK" strokeType="INSIDE" width="570.0">
+         <fill>
+            <LinearGradient endX="1.0" endY="1.0">
+               <stops>
+                  <Stop>
+                     <color>
+                        <Color red="0.02370000071823597" green="0.017999999225139618" blue="0.36000001430511475" opacity="0.8579027652740479" />
+                     </color>
+                  </Stop>
+                  <Stop offset="1.0">
+                     <color>
+                        <Color red="0.15812864899635315" green="0.5473684072494507" blue="0.25543859601020813" />
+                     </color>
+                  </Stop>
+               </stops>
+            </LinearGradient>
+         </fill>
+         <effect>
+            <DropShadow>
+               <color>
+                  <Color opacity="0.6542553901672363" />
+               </color>
+            </DropShadow>
+         </effect>
+      </Rectangle>
+      <Label alignment="CENTER" layoutX="211.0" layoutY="29.0" prefHeight="58.0" prefWidth="175.0" text="Dashboard" textAlignment="CENTER" textFill="WHITE">
+         <font>
+            <Font name="System Bold" size="30.0" />
+         </font>
+      </Label>
+      <JFXButton alignment="CENTER" layoutX="228.0" layoutY="121.0" prefHeight="41.0" prefWidth="139.0" style="-fx-background-color: #3a5f71; -fx-background-radius: 15;" text="Customer" textAlignment="CENTER" textFill="#f4f4f4">
+         <font>
+            <Font size="23.0" />
+         </font>
+         <effect>
+            <DropShadow offsetY="5.0" />
+         </effect>
+      </JFXButton>
+      <JFXButton alignment="CENTER" layoutX="228.0" layoutY="181.0" onAction="#btnItemsOnAction" prefHeight="41.0" prefWidth="139.0" style="-fx-background-color: #3a5f71; -fx-background-radius: 15;" text="Items" textAlignment="CENTER" textFill="#f4f4f4">
+         <font>
+            <Font size="23.0" />
+         </font>
+         <effect>
+            <DropShadow offsetY="5.0" />
+         </effect>
+      </JFXButton>
+      <JFXButton alignment="CENTER" layoutX="229.0" layoutY="241.0" onAction="#btnOrderOnAction" prefHeight="41.0" prefWidth="139.0" style="-fx-background-color: #3a5f71; -fx-background-radius: 15;" text="Order" textAlignment="CENTER" textFill="#f4f4f4">
+         <font>
+            <Font size="23.0" />
+         </font>
+         <effect>
+            <DropShadow offsetY="5.0" />
+         </effect>
+      </JFXButton>
+      <JFXButton alignment="CENTER" layoutX="228.0" layoutY="305.0" onAction="#btnOrderDetailsOnAction" prefHeight="41.0" prefWidth="139.0" style="-fx-background-color: #3a5f71; -fx-background-radius: 15;" text="Order Details" textAlignment="CENTER" textFill="#f4f4f4">
+         <font>
+            <Font size="23.0" />
+         </font>
+         <effect>
+            <DropShadow offsetY="5.0" />
+         </effect>
+      </JFXButton>
+   </children>
+</AnchorPane>

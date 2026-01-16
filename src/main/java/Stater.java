@@ -10,6 +10,7 @@ public class Stater extends Application {
     @Override
     public void start(Stage stage) throws Exception {
         stage.setScene(new Scene(FXMLLoader.load(getClass().getResource("view/login_form.fxml"))));
+        stage.setTitle("Login.lk");
         stage.show();
     }
 }
