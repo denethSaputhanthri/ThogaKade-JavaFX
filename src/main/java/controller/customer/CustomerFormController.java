@@ -19,6 +19,8 @@ import java.util.ResourceBundle;
 
 public class CustomerFormController implements Initializable {
     ObservableList<CustomerDTO>customerDTOS=FXCollections.observableArrayList();
+    @FXML
+    private ComboBox<String> cmbCustomerTitle;
 
     @FXML
     private ComboBox<String> cmbProvince;
@@ -105,6 +107,7 @@ public class CustomerFormController implements Initializable {
     @Override
     public void initialize(URL url, ResourceBundle resourceBundle) {
         cmbProvince.setItems(FXCollections.observableArrayList(Arrays.asList("Western"," Southern","Sabaragamuwa","Wayamba","Central","Eastern","Northern","North Western")));
+        cmbCustomerTitle.setItems(FXCollections.observableArrayList(Arrays.asList("Mr","Ms","Miss")));
 
         colCustomerId.setCellValueFactory(new PropertyValueFactory<>("customerId"));
         colCustomerTitle.setCellValueFactory(new PropertyValueFactory<>("customerTitle"));
@@ -116,6 +119,9 @@ public class CustomerFormController implements Initializable {
         colProvince.setCellValueFactory(new PropertyValueFactory<>("province"));
         colPostalCode.setCellValueFactory(new PropertyValueFactory<>("postalCode"));
         tblCustomer.setItems(customerDTOS);
+
+
+
 
     }
 }
