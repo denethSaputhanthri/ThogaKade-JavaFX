@@ -1,14 +1,23 @@
 package controller.customer;
 
 import com.jfoenix.controls.JFXTextField;
+import javafx.collections.FXCollections;
+import javafx.collections.ObservableList;
 import javafx.event.ActionEvent;
 import javafx.fxml.FXML;
+import javafx.fxml.Initializable;
 import javafx.scene.control.ComboBox;
 import javafx.scene.control.DatePicker;
 import javafx.scene.control.TableColumn;
 import javafx.scene.control.TableView;
+import javafx.scene.control.cell.PropertyValueFactory;
+import model.dto.CustomerDTO;
 
-public class CustomerFormController {
+import java.net.URL;
+import java.util.ResourceBundle;
+
+public class CustomerFormController implements Initializable {
+    ObservableList<CustomerDTO>customerDTOS=FXCollections.observableArrayList();
 
     @FXML
     private ComboBox<?> cmbProvince;
@@ -44,7 +53,7 @@ public class CustomerFormController {
     private DatePicker dpDateOfBirth;
 
     @FXML
-    private TableView<?> tblCustomer;
+    private TableView<CustomerDTO> tblCustomer;
 
     @FXML
     private JFXTextField txtAddress;
@@ -92,4 +101,17 @@ public class CustomerFormController {
 
     }
 
+    @Override
+    public void initialize(URL url, ResourceBundle resourceBundle) {
+        colCustomerId.setCellValueFactory(new PropertyValueFactory<>("customerId"));
+        colCustomerTitle.setCellValueFactory(new PropertyValueFactory<>("customerTitle"));
+        colCustomerName.setCellValueFactory(new PropertyValueFactory<>("customerName"));
+        colDOB.setCellValueFactory(new PropertyValueFactory<>("dob"));
+        colSalary.setCellValueFactory(new PropertyValueFactory<>("salary"));
+        colAddress.setCellValueFactory(new PropertyValueFactory<>("address"));
+        colCity.setCellValueFactory(new PropertyValueFactory<>("city"));
+        colProvince.setCellValueFactory(new PropertyValueFactory<>("province"));
+        colPostalCode.setCellValueFactory(new PropertyValueFactory<>("postalCode"));
+        tblCustomer.setItems(customerDTOS);
+    }
 }
