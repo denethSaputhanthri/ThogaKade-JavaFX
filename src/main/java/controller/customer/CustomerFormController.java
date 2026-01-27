@@ -6,10 +6,7 @@ import javafx.collections.ObservableList;
 import javafx.event.ActionEvent;
 import javafx.fxml.FXML;
 import javafx.fxml.Initializable;
-import javafx.scene.control.ComboBox;
-import javafx.scene.control.DatePicker;
-import javafx.scene.control.TableColumn;
-import javafx.scene.control.TableView;
+import javafx.scene.control.*;
 import javafx.scene.control.cell.PropertyValueFactory;
 import model.dto.CustomerDTO;
 
@@ -110,7 +107,13 @@ public class CustomerFormController implements Initializable {
 
     @FXML
     void btnSearchOnAction(ActionEvent event) {
-
+        String id = txtCustomerId.getText();
+        customerInfoController.getAll().forEach(customerDTO -> {
+            if (customerDTO.getCustomerId().equals(id)){
+                CustomerDTO customer= customerDTO;
+                setTextValue(customer);
+            }
+        });
     }
 
     @FXML
@@ -159,6 +162,17 @@ public class CustomerFormController implements Initializable {
             }
         });
         automatically();
+    }
+    private void setTextValue(CustomerDTO customer){
+        txtCustomerId.setText(customer.getCustomerId());
+        cmbCustomerTitle.setValue(customer.getCustomerTitle());
+        txtCustomerName.setText(customer.getCustomerName());
+        dpDateOfBirth.setValue(customer.getDob());
+        txtSalary.setText(String.valueOf(customer.getSalary()));
+        txtAddress.setText(customer.getAddress());
+        txtCity.setText(customer.getCity());
+        cmbProvince.setValue(cmbProvince.getValue());
+        txtPostalCode.setText(customer.getPostalCode());
     }
     private void automatically(){
         tblCustomer.setItems(customerInfoController.getAll());
