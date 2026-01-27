@@ -5,10 +5,8 @@ import javafx.collections.FXCollections;
 import javafx.collections.ObservableList;
 import model.dto.CustomerDTO;
 
-import java.sql.Connection;
-import java.sql.ResultSet;
-import java.sql.SQLException;
-import java.sql.Statement;
+import java.sql.*;
+import java.time.LocalDate;
 
 public class CustomerInfoController implements CustomerService {
     @Override
@@ -36,5 +34,25 @@ public class CustomerInfoController implements CustomerService {
             throw new RuntimeException(e);
         }
         return customerDTOS;
+    }
+
+    @Override
+    public void addCustomer(String id, String customerTitle, String customerName, LocalDate dateOfBirth, Double salary, String address, String city, String province, String postalCode) {
+        try {
+            Connection connection = DBConnection.getInstance().getConnection();
+            PreparedStatement preparedStatement = connection.prepareStatement("insert into customer values (?,?,?,?,?,?,?,?,?)");
+            preparedStatement.setObject(1,id);
+            preparedStatement.setObject(2,customerTitle);
+            preparedStatement.setObject(3,customerName);
+            preparedStatement.setObject(4,dateOfBirth);
+            preparedStatement.setObject(5,salary);
+            preparedStatement.setObject(6,address);
+            preparedStatement.setObject(7,city);
+            preparedStatement.setObject(8,province);
+            preparedStatement.setObject(9,postalCode);
+            preparedStatement.executeUpdate();
+        } catch (SQLException e) {
+            throw new RuntimeException(e);
+        }
     }
 }

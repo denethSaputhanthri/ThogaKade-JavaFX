@@ -14,6 +14,7 @@ import javafx.scene.control.cell.PropertyValueFactory;
 import model.dto.CustomerDTO;
 
 import java.net.URL;
+import java.time.LocalDate;
 import java.util.Arrays;
 import java.util.ResourceBundle;
 
@@ -80,7 +81,18 @@ public class CustomerFormController implements Initializable {
 
     @FXML
     void btnAddOnAction(ActionEvent event) {
+        String id= txtCustomerId.getText();
+        String customerTitle = cmbCustomerTitle.getValue();
+        String customerName = txtCustomerName.getText();
+        LocalDate dateOfBirth = dpDateOfBirth.getValue();
+        Double salary = Double.valueOf(txtSalary.getText());
+        String address = txtAddress.getText();
+        String city = txtCity.getText();
+        String province = cmbProvince.getValue();
+        String postalCode = txtPostalCode.getText();
 
+        customerInfoController.addCustomer(id,customerTitle,customerName,dateOfBirth,salary,address,city,province,postalCode);
+        automatically();
     }
 
     @FXML
