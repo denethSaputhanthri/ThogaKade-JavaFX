@@ -1,5 +1,8 @@
 package controller.customer;
 
-public interface CustomerService {
+import javafx.collections.ObservableList;
+import model.dto.CustomerDTO;
 
+public interface CustomerService {
+    public ObservableList<CustomerDTO>getAll();
 }

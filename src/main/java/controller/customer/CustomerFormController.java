@@ -18,6 +18,7 @@ import java.util.Arrays;
 import java.util.ResourceBundle;
 
 public class CustomerFormController implements Initializable {
+    CustomerInfoController customerInfoController=new CustomerInfoController();
     ObservableList<CustomerDTO>customerDTOS=FXCollections.observableArrayList();
 
     @FXML
@@ -131,6 +132,11 @@ public class CustomerFormController implements Initializable {
                 txtPostalCode.setText(newValue.getPostalCode());
             }
         });
-
+        automatically();
     }
+    private void automatically(){
+        tblCustomer.setItems(customerInfoController.getAll());
+        customerDTOS.clear();
+    }
+
 }
