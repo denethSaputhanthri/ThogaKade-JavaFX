@@ -19,6 +19,7 @@ import java.util.ResourceBundle;
 
 public class CustomerFormController implements Initializable {
     ObservableList<CustomerDTO>customerDTOS=FXCollections.observableArrayList();
+
     @FXML
     private ComboBox<String> cmbCustomerTitle;
 
@@ -71,9 +72,6 @@ public class CustomerFormController implements Initializable {
     private JFXTextField txtCustomerName;
 
     @FXML
-    private JFXTextField txtCustomerTitle;
-
-    @FXML
     private JFXTextField txtPostalCode;
 
     @FXML
@@ -120,8 +118,19 @@ public class CustomerFormController implements Initializable {
         colPostalCode.setCellValueFactory(new PropertyValueFactory<>("postalCode"));
         tblCustomer.setItems(customerDTOS);
 
-
-
+        tblCustomer.getSelectionModel().selectedItemProperty().addListener((observableValue, customerDTO, newValue) -> {
+            if(newValue!=null){
+                txtCustomerId.setText(newValue.getCustomerId());
+                cmbCustomerTitle.setValue(newValue.getCustomerTitle());
+                txtCustomerName.setText(newValue.getCustomerName());
+                dpDateOfBirth.setValue(newValue.getDob());
+                txtSalary.setText(String.valueOf(newValue.getSalary()));
+                txtAddress.setText(newValue.getAddress());
+                txtCity.setText(newValue.getCity());
+                cmbProvince.setValue(newValue.getProvince());
+                txtPostalCode.setText(newValue.getPostalCode());
+            }
+        });
 
     }
 }
