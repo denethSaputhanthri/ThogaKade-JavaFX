@@ -194,11 +194,11 @@
             </DropShadow>
          </effect>
       </JFXButton>
-      <TableView layoutX="24.0" layoutY="362.0" prefHeight="339.0" prefWidth="1051.0">
+      <TableView fx:id="tblCustomer" layoutX="24.0" layoutY="362.0" prefHeight="339.0" prefWidth="1051.0">
         <columns>
           <TableColumn fx:id="colCustomerId" prefWidth="86.40000915527344" text="Customer Id" />
           <TableColumn fx:id="colCustomerTitle" prefWidth="119.99999237060547" text="Customer Title" />
-            <TableColumn fx:id="col" prefWidth="123.19998168945312" text="Customer Name" />
+            <TableColumn fx:id="colCustomerName" prefWidth="123.19998168945312" text="Customer Name" />
             <TableColumn fx:id="colDOB" prefWidth="82.39996337890625" text="DOB" />
             <TableColumn fx:id="colSalary" prefWidth="108.80001831054688" text="Salary" />
             <TableColumn fx:id="colAddress" prefWidth="235.99993896484375" text="Address" />
