@@ -97,7 +97,10 @@ public class CustomerFormController implements Initializable {
 
     @FXML
     void btnDeleteOnAction(ActionEvent event) {
+        String id = txtCustomerId.getText();
 
+        customerInfoController.deletCustomer(id);
+        automatically();
     }
 
     @FXML
