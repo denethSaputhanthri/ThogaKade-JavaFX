@@ -14,13 +14,14 @@ import javafx.scene.control.cell.PropertyValueFactory;
 import model.dto.CustomerDTO;
 
 import java.net.URL;
+import java.util.Arrays;
 import java.util.ResourceBundle;
 
 public class CustomerFormController implements Initializable {
     ObservableList<CustomerDTO>customerDTOS=FXCollections.observableArrayList();
 
     @FXML
-    private ComboBox<?> cmbProvince;
+    private ComboBox<String> cmbProvince;
 
     @FXML
     private TableColumn<?, ?> colAddress;
@@ -103,6 +104,8 @@ public class CustomerFormController implements Initializable {
 
     @Override
     public void initialize(URL url, ResourceBundle resourceBundle) {
+        cmbProvince.setItems(FXCollections.observableArrayList(Arrays.asList("Western"," Southern","Sabaragamuwa","Wayamba","Central","Eastern","Northern","North Western")));
+
         colCustomerId.setCellValueFactory(new PropertyValueFactory<>("customerId"));
         colCustomerTitle.setCellValueFactory(new PropertyValueFactory<>("customerTitle"));
         colCustomerName.setCellValueFactory(new PropertyValueFactory<>("customerName"));
@@ -113,5 +116,6 @@ public class CustomerFormController implements Initializable {
         colProvince.setCellValueFactory(new PropertyValueFactory<>("province"));
         colPostalCode.setCellValueFactory(new PropertyValueFactory<>("postalCode"));
         tblCustomer.setItems(customerDTOS);
+
     }
 }
