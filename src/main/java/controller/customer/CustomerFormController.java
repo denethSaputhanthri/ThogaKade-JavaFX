@@ -102,7 +102,7 @@ public class CustomerFormController implements Initializable {
 
     @FXML
     void btnReloadOnAction(ActionEvent event) {
-
+        automatically();
     }
 
     @FXML
@@ -112,7 +112,18 @@ public class CustomerFormController implements Initializable {
 
     @FXML
     void btnUpdateOnAction(ActionEvent event) {
+        String id= txtCustomerId.getText();
+        String customerTitle = cmbCustomerTitle.getValue();
+        String customerName = txtCustomerName.getText();
+        LocalDate dateOfBirth = dpDateOfBirth.getValue();
+        Double salary = Double.valueOf(txtSalary.getText());
+        String address = txtAddress.getText();
+        String city = txtCity.getText();
+        String province = cmbProvince.getValue();
+        String postalCode = txtPostalCode.getText();
 
+        customerInfoController.updateCustomer(id,customerTitle,customerName,dateOfBirth,salary,address,city,province,postalCode);
+        automatically();
     }
 
     @Override
