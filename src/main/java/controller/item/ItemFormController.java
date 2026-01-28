@@ -1,21 +1,13 @@
 package controller.item;
 
-import javafx.collections.FXCollections;
-import javafx.collections.ObservableList;
+import com.jfoenix.controls.JFXTextArea;
+import com.jfoenix.controls.JFXTextField;
 import javafx.event.ActionEvent;
 import javafx.fxml.FXML;
-import javafx.fxml.Initializable;
 import javafx.scene.control.TableColumn;
 import javafx.scene.control.TableView;
-import javafx.scene.control.cell.PropertyValueFactory;
-import model.dto.ItemDTO;
 
-import java.net.URL;
-import java.sql.*;
-import java.util.ResourceBundle;
-
-public class ItemFormController implements Initializable {
-    ObservableList<ItemDTO>itemDTOS= FXCollections.observableArrayList();
+public class ItemFormController {
 
     @FXML
     private TableColumn<?, ?> colDescription;
@@ -33,7 +25,22 @@ public class ItemFormController implements Initializable {
     private TableColumn<?, ?> colUnitPrice;
 
     @FXML
-    private TableView<ItemDTO> tblItem;
+    private TableView<?> tblItem;
+
+    @FXML
+    private JFXTextArea txtDescription;
+
+    @FXML
+    private JFXTextField txtItemCode;
+
+    @FXML
+    private JFXTextField txtPackSize;
+
+    @FXML
+    private JFXTextField txtQty;
+
+    @FXML
+    private JFXTextField txtUnitPrice;
 
     @FXML
     void btnAddOnAction(ActionEvent event) {
@@ -51,37 +58,13 @@ public class ItemFormController implements Initializable {
     }
 
     @FXML
+    void btnSearchOnAction(ActionEvent event) {
+
+    }
+
+    @FXML
     void btnUpdateOnAction(ActionEvent event) {
 
     }
-    private void autoReload(){
-        try {
-            Connection connection = DriverManager.getConnection("jdbc:mysql://localhost:3306/Thogakade", "root", "1234");
-            PreparedStatement preparedStatement = connection.prepareStatement("SELECT * FROM item");
-            ResultSet resultSet = preparedStatement.executeQuery();
-            while (resultSet.next()){
-                ItemDTO itemDTO=new ItemDTO(
-                        resultSet.getString("ItemCode"),
-                        resultSet.getString("Description"),
-                        resultSet.getString("Description"),
-                        resultSet.getDouble("UnitPrice"),
-                        resultSet.getInt("QtyOnHand")
-                );
-                itemDTOS.add(itemDTO);
-            }
-        } catch (SQLException e) {
-            throw new RuntimeException(e);
-        }
-        colItemCode.setCellValueFactory(new PropertyValueFactory<>("itemCode"));
-        colDescription.setCellValueFactory(new PropertyValueFactory<>("description"));
-        colPackSize.setCellValueFactory(new PropertyValueFactory<>("packSize"));
-        colUnitPrice.setCellValueFactory(new PropertyValueFactory<>("unitPrice"));
-        colQtyOnHand.setCellValueFactory(new PropertyValueFactory<>("qtyOnHand"));
-        tblItem.setItems(itemDTOS);
-    }
 
-    @Override
-    public void initialize(URL url, ResourceBundle resourceBundle) {
-        autoReload();
-    }
 }
