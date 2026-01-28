@@ -5,10 +5,7 @@ import javafx.collections.FXCollections;
 import javafx.collections.ObservableList;
 import model.dto.ItemDTO;
 
-import java.sql.Connection;
-import java.sql.ResultSet;
-import java.sql.SQLException;
-import java.sql.Statement;
+import java.sql.*;
 
 public class ItemInfoController implements ItemService{
     @Override
@@ -32,5 +29,21 @@ public class ItemInfoController implements ItemService{
             throw new RuntimeException(e);
         }
         return itemDTOS;
+    }
+
+    @Override
+    public void addItem(String itemCode, String description, String packSize, Double unitPrice, Integer qty) {
+        try {
+            Connection connection = DBConnection.getInstance().getConnection();
+            PreparedStatement preparedStatement = connection.prepareStatement("insert into item values(?,?,?,?,?)" );
+            preparedStatement.setObject(1,itemCode);
+            preparedStatement.setObject(2,description);
+            preparedStatement.setObject(3,packSize);
+            preparedStatement.setObject(4,unitPrice);
+            preparedStatement.setObject(5,qty);
+            preparedStatement.executeUpdate();
+        } catch (SQLException e) {
+            throw new RuntimeException(e);
+        }
     }
 }
