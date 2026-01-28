@@ -16,6 +16,7 @@ import java.net.URL;
 import java.util.ResourceBundle;
 
 public class ItemFormController implements Initializable {
+    ItemInfoController itemInfoController=new ItemInfoController();
     ObservableList<ItemDTO>itemDTOS= FXCollections.observableArrayList();
 
     @FXML
@@ -94,6 +95,11 @@ public class ItemFormController implements Initializable {
                 txtUnitPrice.setText(String.valueOf(newValue.getUnitPrice()));
             }
         } );
+        autoload();
+    }
+    private void autoload(){
+        tblItem.setItems(itemInfoController.getAll());
+        itemDTOS.clear();
 
     }
 }
