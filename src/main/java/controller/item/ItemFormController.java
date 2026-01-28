@@ -2,12 +2,21 @@ package controller.item;
 
 import com.jfoenix.controls.JFXTextArea;
 import com.jfoenix.controls.JFXTextField;
+import javafx.collections.FXCollections;
+import javafx.collections.ObservableList;
 import javafx.event.ActionEvent;
 import javafx.fxml.FXML;
+import javafx.fxml.Initializable;
 import javafx.scene.control.TableColumn;
 import javafx.scene.control.TableView;
+import javafx.scene.control.cell.PropertyValueFactory;
+import model.dto.ItemDTO;
 
-public class ItemFormController {
+import java.net.URL;
+import java.util.ResourceBundle;
+
+public class ItemFormController implements Initializable {
+    ObservableList<ItemDTO>itemDTOS= FXCollections.observableArrayList();
 
     @FXML
     private TableColumn<?, ?> colDescription;
@@ -25,7 +34,7 @@ public class ItemFormController {
     private TableColumn<?, ?> colUnitPrice;
 
     @FXML
-    private TableView<?> tblItem;
+    private TableView<ItemDTO> tblItem;
 
     @FXML
     private JFXTextArea txtDescription;
@@ -67,4 +76,13 @@ public class ItemFormController {
 
     }
 
+    @Override
+    public void initialize(URL url, ResourceBundle resourceBundle) {
+        colItemCode.setCellValueFactory(new PropertyValueFactory<>("itemCode"));
+        colDescription.setCellValueFactory(new PropertyValueFactory<>("description"));
+        colPackSize.setCellValueFactory(new PropertyValueFactory<>("packSize"));
+        colUnitPrice.setCellValueFactory(new PropertyValueFactory<>("unitPrice"));
+        colQtyOnHand.setCellValueFactory(new PropertyValueFactory<>("qtyOnHand"));
+        tblItem.setItems(itemDTOS);
+    }
 }
