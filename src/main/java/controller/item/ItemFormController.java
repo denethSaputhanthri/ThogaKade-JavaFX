@@ -84,5 +84,16 @@ public class ItemFormController implements Initializable {
         colUnitPrice.setCellValueFactory(new PropertyValueFactory<>("unitPrice"));
         colQtyOnHand.setCellValueFactory(new PropertyValueFactory<>("qtyOnHand"));
         tblItem.setItems(itemDTOS);
+
+        tblItem.getSelectionModel().selectedItemProperty().addListener((observableValue, itemDTO, newValue) ->{
+            if(newValue!=null){
+                txtItemCode.setText(newValue.getItemCode());
+                txtDescription.setText(newValue.getDescription());
+                txtPackSize.setText(newValue.getPackSize());
+                txtQty.setText(String.valueOf(newValue.getQtyOnHand()));
+                txtUnitPrice.setText(String.valueOf(newValue.getUnitPrice()));
+            }
+        } );
+
     }
 }
