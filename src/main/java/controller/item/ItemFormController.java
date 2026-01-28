@@ -81,7 +81,14 @@ public class ItemFormController implements Initializable {
 
     @FXML
     void btnUpdateOnAction(ActionEvent event) {
+        String itemCode = txtItemCode.getText();
+        String description = txtDescription.getText();
+        String packSize = txtPackSize.getText();
+        Double unitPrice = Double.valueOf(txtUnitPrice.getText());
+        Integer qty = Integer.valueOf(txtQty.getText());
 
+        itemInfoController.updateItem(itemCode,description,packSize,unitPrice,qty);
+        autoload();
     }
 
     @Override

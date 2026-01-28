@@ -46,4 +46,20 @@ public class ItemInfoController implements ItemService{
             throw new RuntimeException(e);
         }
     }
+
+    @Override
+    public void updateItem(String itemCode, String description, String packSize, Double unitPrice, Integer qty) {
+        try {
+            Connection connection = DBConnection.getInstance().getConnection();
+            PreparedStatement preparedStatement = connection.prepareStatement("update item set Description=?,PackSize=?,UnitPrice=?,QtyOnHand=? where ItemCode=?");
+            preparedStatement.setObject(1,description);
+            preparedStatement.setObject(2,packSize);
+            preparedStatement.setObject(3,unitPrice);
+            preparedStatement.setObject(4,qty);
+            preparedStatement.setObject(5,itemCode);
+            preparedStatement.executeUpdate();
+        } catch (SQLException e) {
+            throw new RuntimeException(e);
+        }
+    }
 }
