@@ -79,7 +79,13 @@ public class ItemFormController implements Initializable {
 
     @FXML
     void btnSearchOnAction(ActionEvent event) {
-
+        String itemCode = txtItemCode.getText();
+        itemInfoController.getAll().forEach(itemDTO -> {
+            if(itemDTO.getItemCode().equals(itemCode)){
+              ItemDTO item= itemDTO;
+              setTextValue(item);
+            }
+        });
     }
 
     @FXML
@@ -113,6 +119,13 @@ public class ItemFormController implements Initializable {
             }
         } );
         autoload();
+    }
+    private void setTextValue(ItemDTO item){
+        txtItemCode.setText(item.getItemCode());
+        txtDescription.setText(item.getDescription());
+        txtPackSize.setText(item.getPackSize());
+        txtQty.setText(String.valueOf(item.getQtyOnHand()));
+        txtUnitPrice.setText(String.valueOf(item.getUnitPrice()));
     }
     private void autoload(){
         tblItem.setItems(itemInfoController.getAll());
