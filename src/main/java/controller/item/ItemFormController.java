@@ -66,7 +66,10 @@ public class ItemFormController implements Initializable {
 
     @FXML
     void btnDeleteOnAction(ActionEvent event) {
+        String itemCode = txtItemCode.getText();
 
+        itemInfoController.deleteItem(itemCode);
+        autoload();
     }
 
     @FXML
