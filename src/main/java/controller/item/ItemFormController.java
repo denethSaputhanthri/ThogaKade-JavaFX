@@ -62,6 +62,7 @@ public class ItemFormController implements Initializable {
 
         itemInfoController.addItem(itemCode,description,packSize,unitPrice,qty);
         autoload();
+        clearFields();
     }
 
     @FXML
@@ -70,11 +71,12 @@ public class ItemFormController implements Initializable {
 
         itemInfoController.deleteItem(itemCode);
         autoload();
+        clearFields();
     }
 
     @FXML
     void btnReloadOnAction(ActionEvent event) {
-
+        autoload();
     }
 
     @FXML
@@ -86,6 +88,7 @@ public class ItemFormController implements Initializable {
               setTextValue(item);
             }
         });
+        clearFields();
     }
 
     @FXML
@@ -98,6 +101,7 @@ public class ItemFormController implements Initializable {
 
         itemInfoController.updateItem(itemCode,description,packSize,unitPrice,qty);
         autoload();
+        clearFields();
     }
 
     @Override
@@ -130,6 +134,12 @@ public class ItemFormController implements Initializable {
     private void autoload(){
         tblItem.setItems(itemInfoController.getAll());
         itemDTOS.clear();
-
+    }
+    private void clearFields(){
+        txtItemCode.clear();
+        txtDescription.clear();
+        txtQty.clear();
+        txtPackSize.clear();
+        txtUnitPrice.clear();
     }
 }
