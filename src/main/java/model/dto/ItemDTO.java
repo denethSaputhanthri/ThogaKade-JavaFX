@@ -15,4 +15,5 @@ public class ItemDTO {
     private String packSize;
     private Double unitPrice;
     private Integer qtyOnHand;
+
 }

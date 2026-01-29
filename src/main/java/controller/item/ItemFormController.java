@@ -1,5 +1,7 @@
 package controller.item;
 
+import com.jfoenix.controls.JFXTextArea;
+import com.jfoenix.controls.JFXTextField;
 import javafx.collections.FXCollections;
 import javafx.collections.ObservableList;
 import javafx.event.ActionEvent;
@@ -11,10 +13,10 @@ import javafx.scene.control.cell.PropertyValueFactory;
 import model.dto.ItemDTO;
 
 import java.net.URL;
-import java.sql.*;
 import java.util.ResourceBundle;
 
 public class ItemFormController implements Initializable {
+    ItemInfoController itemInfoController=new ItemInfoController();
     ObservableList<ItemDTO>itemDTOS= FXCollections.observableArrayList();
 
     @FXML
@@ -36,52 +38,108 @@ public class ItemFormController implements Initializable {
     private TableView<ItemDTO> tblItem;
 
     @FXML
-    void btnAddOnAction(ActionEvent event) {
+    private JFXTextArea txtDescription;
 
+    @FXML
+    private JFXTextField txtItemCode;
+
+    @FXML
+    private JFXTextField txtPackSize;
+
+    @FXML
+    private JFXTextField txtQty;
+
+    @FXML
+    private JFXTextField txtUnitPrice;
+
+    @FXML
+    void btnAddOnAction(ActionEvent event) {
+        String itemCode = txtItemCode.getText();
+        String description = txtDescription.getText();
+        String packSize = txtPackSize.getText();
+        Double unitPrice = Double.valueOf(txtUnitPrice.getText());
+        Integer qty = Integer.valueOf(txtQty.getText());
+
+        itemInfoController.addItem(itemCode,description,packSize,unitPrice,qty);
+        autoload();
+        clearFields();
     }
 
     @FXML
     void btnDeleteOnAction(ActionEvent event) {
+        String itemCode = txtItemCode.getText();
 
+        itemInfoController.deleteItem(itemCode);
+        autoload();
+        clearFields();
     }
 
     @FXML
     void btnReloadOnAction(ActionEvent event) {
+        autoload();
+    }
 
+    @FXML
+    void btnSearchOnAction(ActionEvent event) {
+        String itemCode = txtItemCode.getText();
+        itemInfoController.getAll().forEach(itemDTO -> {
+            if(itemDTO.getItemCode().equals(itemCode)){
+              ItemDTO item= itemDTO;
+              setTextValue(item);
+            }
+        });
+        clearFields();
     }
 
     @FXML
     void btnUpdateOnAction(ActionEvent event) {
+        String itemCode = txtItemCode.getText();
+        String description = txtDescription.getText();
+        String packSize = txtPackSize.getText();
+        Double unitPrice = Double.valueOf(txtUnitPrice.getText());
+        Integer qty = Integer.valueOf(txtQty.getText());
 
+        itemInfoController.updateItem(itemCode,description,packSize,unitPrice,qty);
+        autoload();
+        clearFields();
     }
-    private void autoReload(){
-        try {
-            Connection connection = DriverManager.getConnection("jdbc:mysql://localhost:3306/Thogakade", "root", "1234");
-            PreparedStatement preparedStatement = connection.prepareStatement("SELECT * FROM item");
-            ResultSet resultSet = preparedStatement.executeQuery();
-            while (resultSet.next()){
-                ItemDTO itemDTO=new ItemDTO(
-                        resultSet.getString("ItemCode"),
-                        resultSet.getString("Description"),
-                        resultSet.getString("Description"),
-                        resultSet.getDouble("UnitPrice"),
-                        resultSet.getInt("QtyOnHand")
-                );
-                itemDTOS.add(itemDTO);
-            }
-        } catch (SQLException e) {
-            throw new RuntimeException(e);
-        }
+
+    @Override
+    public void initialize(URL url, ResourceBundle resourceBundle) {
         colItemCode.setCellValueFactory(new PropertyValueFactory<>("itemCode"));
         colDescription.setCellValueFactory(new PropertyValueFactory<>("description"));
         colPackSize.setCellValueFactory(new PropertyValueFactory<>("packSize"));
         colUnitPrice.setCellValueFactory(new PropertyValueFactory<>("unitPrice"));
         colQtyOnHand.setCellValueFactory(new PropertyValueFactory<>("qtyOnHand"));
         tblItem.setItems(itemDTOS);
-    }
 
-    @Override
-    public void initialize(URL url, ResourceBundle resourceBundle) {
-        autoReload();
+        tblItem.getSelectionModel().selectedItemProperty().addListener((observableValue, itemDTO, newValue) ->{
+            if(newValue!=null){
+                txtItemCode.setText(newValue.getItemCode());
+                txtDescription.setText(newValue.getDescription());
+                txtPackSize.setText(newValue.getPackSize());
+                txtQty.setText(String.valueOf(newValue.getQtyOnHand()));
+                txtUnitPrice.setText(String.valueOf(newValue.getUnitPrice()));
+            }
+        } );
+        autoload();
+    }
+    private void setTextValue(ItemDTO item){
+        txtItemCode.setText(item.getItemCode());
+        txtDescription.setText(item.getDescription());
+        txtPackSize.setText(item.getPackSize());
+        txtQty.setText(String.valueOf(item.getQtyOnHand()));
+        txtUnitPrice.setText(String.valueOf(item.getUnitPrice()));
+    }
+    private void autoload(){
+        tblItem.setItems(itemInfoController.getAll());
+        itemDTOS.clear();
+    }
+    private void clearFields(){
+        txtItemCode.clear();
+        txtDescription.clear();
+        txtQty.clear();
+        txtPackSize.clear();
+        txtUnitPrice.clear();
     }
 }
