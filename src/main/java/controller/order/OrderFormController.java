@@ -13,6 +13,7 @@ import javafx.scene.control.cell.PropertyValueFactory;
 import model.dto.OrderDTO;
 
 import java.net.URL;
+import java.time.LocalDate;
 import java.util.ResourceBundle;
 
 public class OrderFormController implements Initializable {
@@ -43,6 +44,7 @@ public class OrderFormController implements Initializable {
     @FXML
     void btnDeleteOnAction(ActionEvent event) {
 
+
     }
 
     @FXML
@@ -52,7 +54,11 @@ public class OrderFormController implements Initializable {
 
     @FXML
     void btnUpdateOnAction(ActionEvent event) {
+        String orderId = txtOrderId.getText();
+        LocalDate orderDate = dpOrderDate.getValue();
+        String customerId = txtCustomerId.getText();
 
+        orderInfoController.updateOrder(orderId, dpOrderDate.getValue(),customerId);
     }
 
     @Override
