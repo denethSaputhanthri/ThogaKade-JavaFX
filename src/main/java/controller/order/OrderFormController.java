@@ -49,6 +49,7 @@ public class OrderFormController implements Initializable {
         String customerId = txtCustomerId.getText();
 
         orderInfoController.deleteOrder(orderId);
+        autoLoad();
     }
 
     @FXML
@@ -74,6 +75,7 @@ public class OrderFormController implements Initializable {
         String customerId = txtCustomerId.getText();
 
         orderInfoController.updateOrder(orderId, dpOrderDate.getValue(),customerId);
+        autoLoad();
     }
 
     @Override
@@ -95,11 +97,15 @@ public class OrderFormController implements Initializable {
     private void autoLoad(){
         tblOrderInfo.setItems(orderInfoController.getAllOrders());
         orderDTOS.clear();
-
+        clearFields();
     }
     private void setTextValue(OrderDTO order){
         txtCustomerId.setText(order.getCustomerId());
         txtOrderId.setText(order.getOrderId());
         dpOrderDate.setValue(order.getOrderDate());
+    }
+    private void clearFields(){
+        txtOrderId.clear();
+        txtCustomerId.clear();
     }
 }
