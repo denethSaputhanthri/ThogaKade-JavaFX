@@ -1,13 +1,22 @@
 package controller.order;
 
 import com.jfoenix.controls.JFXTextField;
+import javafx.collections.FXCollections;
+import javafx.collections.ObservableList;
 import javafx.event.ActionEvent;
 import javafx.fxml.FXML;
+import javafx.fxml.Initializable;
 import javafx.scene.control.DatePicker;
 import javafx.scene.control.TableColumn;
 import javafx.scene.control.TableView;
+import javafx.scene.control.cell.PropertyValueFactory;
+import model.dto.OrderDTO;
 
-public class OrderFormController {
+import java.net.URL;
+import java.util.ResourceBundle;
+
+public class OrderFormController implements Initializable {
+    ObservableList<OrderDTO>orderDTOS= FXCollections.observableArrayList();
 
     @FXML
     private TableColumn<?, ?> colCustomerId;
@@ -22,7 +31,7 @@ public class OrderFormController {
     private DatePicker dpOrderDate;
 
     @FXML
-    private TableView<?> tblOrderInfo;
+    private TableView<OrderDTO> tblOrderInfo;
 
     @FXML
     private JFXTextField txtCustomerId;
@@ -45,4 +54,11 @@ public class OrderFormController {
 
     }
 
+    @Override
+    public void initialize(URL url, ResourceBundle resourceBundle) {
+        colOrderId.setCellValueFactory(new PropertyValueFactory<>("orderId"));
+        colOrderDate.setCellValueFactory(new PropertyValueFactory<>("orderDate"));
+        colCustomerId.setCellValueFactory(new PropertyValueFactory<>("customerId"));
+        tblOrderInfo.setItems(orderDTOS);
+    }
 }
