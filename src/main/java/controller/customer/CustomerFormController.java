@@ -111,6 +111,8 @@ public class CustomerFormController implements Initializable {
         customerInfoController.getAll().forEach(customerDTO -> {
             if (customerDTO.getCustomerId().equals(id)){
                 CustomerDTO customer= customerDTO;
+                tblCustomer.getSelectionModel().select(customerDTO);
+                tblCustomer.scrollTo(customerDTO);
                 setTextValue(customer);
             }
         });
