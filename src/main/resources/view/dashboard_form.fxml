@@ -10,7 +10,6 @@
 <?import javafx.scene.shape.Rectangle?>
 <?import javafx.scene.text.Font?>
 
-
 <AnchorPane prefHeight="400.0" prefWidth="600.0" xmlns="http://javafx.com/javafx/25" xmlns:fx="http://javafx.com/fxml/1" fx:controller="controller.DashboardFormController">
    <children>
       <Rectangle arcHeight="5.0" arcWidth="5.0" height="89.0" layoutX="14.0" layoutY="14.0" stroke="BLACK" strokeType="INSIDE" width="570.0">
@@ -43,7 +42,7 @@
             <Font name="System Bold" size="30.0" />
          </font>
       </Label>
-      <JFXButton alignment="CENTER" layoutX="228.0" layoutY="121.0" prefHeight="41.0" prefWidth="139.0" style="-fx-background-color: #3a5f71; -fx-background-radius: 15;" text="Customer" textAlignment="CENTER" textFill="#f4f4f4">
+      <JFXButton alignment="CENTER" layoutX="228.0" layoutY="121.0" onAction="#btnCustomerOnAction" prefHeight="41.0" prefWidth="139.0" style="-fx-background-color: #3a5f71; -fx-background-radius: 15;" text="Customer" textAlignment="CENTER" textFill="#f4f4f4">
          <font>
             <Font size="23.0" />
          </font>
