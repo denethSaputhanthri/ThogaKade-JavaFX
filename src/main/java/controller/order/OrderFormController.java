@@ -60,5 +60,14 @@ public class OrderFormController implements Initializable {
         colOrderDate.setCellValueFactory(new PropertyValueFactory<>("orderDate"));
         colCustomerId.setCellValueFactory(new PropertyValueFactory<>("customerId"));
         tblOrderInfo.setItems(orderDTOS);
+
+        tblOrderInfo.getSelectionModel().selectedItemProperty().addListener((observableValue, orderDTO, newValue) -> {
+            if(newValue!=null){
+                txtOrderId.setText(newValue.getOrderId());
+                dpOrderDate.setValue(newValue.getOrderDate());
+                txtCustomerId.setText(newValue.getCustomerId());
+            }
+        });
+
     }
 }
