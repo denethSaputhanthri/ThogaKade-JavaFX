@@ -16,6 +16,7 @@ import java.net.URL;
 import java.util.ResourceBundle;
 
 public class OrderFormController implements Initializable {
+    OrderInfoController orderInfoController=new OrderInfoController();
     ObservableList<OrderDTO>orderDTOS= FXCollections.observableArrayList();
 
     @FXML
@@ -68,6 +69,11 @@ public class OrderFormController implements Initializable {
                 txtCustomerId.setText(newValue.getCustomerId());
             }
         });
+        autoLoad();
+    }
+    private void autoLoad(){
+        tblOrderInfo.setItems(orderInfoController.getAllOrders());
+        orderDTOS.clear();
 
     }
 }
