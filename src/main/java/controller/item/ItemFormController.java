@@ -84,11 +84,12 @@ public class ItemFormController implements Initializable {
         String itemCode = txtItemCode.getText();
         itemInfoController.getAll().forEach(itemDTO -> {
             if(itemDTO.getItemCode().equals(itemCode)){
+                tblItem.getSelectionModel().select(itemDTO);
+                tblItem.scrollTo(itemDTO);
               ItemDTO item= itemDTO;
               setTextValue(item);
             }
         });
-        clearFields();
     }
 
     @FXML
