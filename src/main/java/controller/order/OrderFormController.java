@@ -43,8 +43,11 @@ public class OrderFormController implements Initializable {
 
     @FXML
     void btnDeleteOnAction(ActionEvent event) {
+        String orderId = txtOrderId.getText();
+        LocalDate orderDate = dpOrderDate.getValue();
+        String customerId = txtCustomerId.getText();
 
-
+        orderInfoController.deleteOrder(orderId);
     }
 
     @FXML

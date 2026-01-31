@@ -10,4 +10,5 @@ import java.time.LocalDate;
 public interface OrderService {
     ObservableList<OrderDTO> getAllOrders();
     void updateOrder(String orderId, LocalDate dpOrderDate, String customerId);
+    void deleteOrder(String orderId);
 }
