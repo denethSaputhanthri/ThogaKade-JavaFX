@@ -14,6 +14,7 @@ import model.dto.OrderDTO;
 
 import java.net.URL;
 import java.time.LocalDate;
+import java.util.Date;
 import java.util.ResourceBundle;
 
 public class OrderFormController implements Initializable {
@@ -52,7 +53,18 @@ public class OrderFormController implements Initializable {
 
     @FXML
     void btnSearchOnAction(ActionEvent event) {
+        String orderId = txtOrderId.getText();
+        String customerId = txtCustomerId.getText();
+        LocalDate localDate = dpOrderDate.getValue();
 
+        orderInfoController.getAllOrders().forEach(orderDTO -> {
+            if(orderDTO.getOrderId().equals(orderId) || orderDTO.getOrderDate().equals(localDate) || orderDTO.getCustomerId().equals(customerId) ){
+                tblOrderInfo.getSelectionModel().select(orderDTO);
+                tblOrderInfo.scrollTo(orderDTO);
+                OrderDTO order = orderDTO;
+                setTextValue(order);
+            }
+        });
     }
 
     @FXML
@@ -84,5 +96,10 @@ public class OrderFormController implements Initializable {
         tblOrderInfo.setItems(orderInfoController.getAllOrders());
         orderDTOS.clear();
 
+    }
+    private void setTextValue(OrderDTO order){
+        txtCustomerId.setText(order.getCustomerId());
+        txtOrderId.setText(order.getOrderId());
+        dpOrderDate.setValue(order.getOrderDate());
     }
 }
