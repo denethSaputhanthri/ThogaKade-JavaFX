@@ -14,9 +14,9 @@
 <?import javafx.scene.shape.Rectangle?>
 <?import javafx.scene.text.Font?>
 
-<AnchorPane prefHeight="561.0" prefWidth="882.0" style="-fx-background-color: #070F2B;" xmlns="http://javafx.com/javafx/25" xmlns:fx="http://javafx.com/fxml/1" fx:controller="controller.item.ItemFormController">
+<AnchorPane prefHeight="660.0" prefWidth="1095.0" style="-fx-background-color: #070F2B;" xmlns="http://javafx.com/javafx/25" xmlns:fx="http://javafx.com/fxml/1" fx:controller="controller.item.ItemFormController">
    <children>
-      <Rectangle arcHeight="5.0" arcWidth="5.0" height="66.0" layoutX="5.0" layoutY="5.0" stroke="BLACK" strokeType="INSIDE" width="873.0">
+      <Rectangle arcHeight="5.0" arcWidth="5.0" height="66.0" layoutX="5.0" layoutY="5.0" stroke="BLACK" strokeType="INSIDE" width="1087.0">
          <fill>
             <LinearGradient endX="1.0" endY="1.0">
                <stops>
@@ -41,21 +41,21 @@
             </DropShadow>
          </effect>
       </Rectangle>
-      <Label alignment="CENTER" layoutX="300.0" layoutY="5.0" prefHeight="66.0" prefWidth="282.0" text="Item Management" textFill="WHITE">
+      <Label alignment="CENTER" layoutX="406.0" layoutY="5.0" prefHeight="66.0" prefWidth="282.0" text="Item Management" textFill="WHITE">
          <font>
             <Font name="System Bold" size="29.0" />
          </font>
       </Label>
-      <TableView fx:id="tblItem" layoutX="32.0" layoutY="275.0" prefHeight="270.0" prefWidth="818.0" stylesheets="@css/style.css">
+      <TableView fx:id="tblItem" layoutX="53.0" layoutY="313.0" prefHeight="314.0" prefWidth="990.0" stylesheets="@css/style.css">
         <columns>
-          <TableColumn fx:id="colItemCode" prefWidth="127.19999694824219" text="Item Code" />
-          <TableColumn fx:id="colDescription" prefWidth="258.3999938964844" text="Description" />
-            <TableColumn fx:id="colPackSize" prefWidth="143.20004272460938" text="Pack Size" />
-            <TableColumn fx:id="colUnitPrice" prefWidth="152.0" text="Unit Price" />
-            <TableColumn fx:id="colQtyOnHand" prefWidth="113.5999755859375" text="QtyOnHand" />
+          <TableColumn fx:id="colItemCode" prefWidth="176.80001831054688" text="Item Code" />
+          <TableColumn fx:id="colDescription" prefWidth="285.59996032714844" text="Description" />
+            <TableColumn fx:id="colPackSize" prefWidth="158.39996337890625" text="Pack Size" />
+            <TableColumn fx:id="colUnitPrice" prefWidth="183.2000732421875" text="Unit Price" />
+            <TableColumn fx:id="colQtyOnHand" prefWidth="163.20001220703125" text="QtyOnHand" />
         </columns>
       </TableView>
-      <Button layoutX="743.0" layoutY="208.0" mnemonicParsing="false" onAction="#btnReloadOnAction" prefHeight="46.0" prefWidth="106.0" style="-fx-background-color: #16476A; -fx-background-radius: 50;" text="Reload">
+      <Button layoutX="877.0" layoutY="237.0" mnemonicParsing="false" onAction="#btnReloadOnAction" prefHeight="46.0" prefWidth="106.0" style="-fx-background-color: #16476A; -fx-background-radius: 50;" text="Reload">
          <font>
             <Font name="System Bold Italic" size="17.0" />
          </font>
@@ -83,7 +83,7 @@
             </DropShadow>
          </effect>
       </Button>
-      <Button layoutX="586.0" layoutY="208.0" mnemonicParsing="false" onAction="#btnDeleteOnAction" prefHeight="46.0" prefWidth="106.0" style="-fx-background-color: #16476A; -fx-background-radius: 50;" text="Delete">
+      <Button layoutX="694.0" layoutY="237.0" mnemonicParsing="false" onAction="#btnDeleteOnAction" prefHeight="46.0" prefWidth="106.0" style="-fx-background-color: #16476A; -fx-background-radius: 50;" text="Delete">
          <font>
             <Font name="System Bold Italic" size="17.0" />
          </font>
@@ -111,7 +111,7 @@
             </DropShadow>
          </effect>
       </Button>
-      <Button layoutX="388.0" layoutY="208.0" mnemonicParsing="false" onAction="#btnUpdateOnAction" prefHeight="46.0" prefWidth="106.0" style="-fx-background-color: #16476A; -fx-background-radius: 50;" text="Update">
+      <Button layoutX="494.0" layoutY="237.0" mnemonicParsing="false" onAction="#btnUpdateOnAction" prefHeight="46.0" prefWidth="106.0" style="-fx-background-color: #16476A; -fx-background-radius: 50;" text="Update">
          <font>
             <Font name="System Bold Italic" size="17.0" />
          </font>
@@ -139,7 +139,7 @@
             </DropShadow>
          </effect>
       </Button>
-      <Button layoutX="197.0" layoutY="208.0" mnemonicParsing="false" onAction="#btnAddOnAction" prefHeight="46.0" prefWidth="106.0" style="-fx-background-color: #16476A; -fx-background-radius: 50;" text="Add">
+      <Button layoutX="305.0" layoutY="237.0" mnemonicParsing="false" onAction="#btnAddOnAction" prefHeight="46.0" prefWidth="106.0" style="-fx-background-color: #16476A; -fx-background-radius: 50;" text="Add">
          <font>
             <Font name="System Bold Italic" size="17.0" />
          </font>
@@ -167,7 +167,7 @@
             </DropShadow>
          </effect>
       </Button>
-      <Button layoutX="32.0" layoutY="208.0" mnemonicParsing="false" onAction="#btnSearchOnAction" prefHeight="46.0" prefWidth="106.0" style="-fx-background-color: #16476A; -fx-background-radius: 50;" text="Search">
+      <Button layoutX="124.0" layoutY="237.0" mnemonicParsing="false" onAction="#btnSearchOnAction" prefHeight="46.0" prefWidth="106.0" style="-fx-background-color: #16476A; -fx-background-radius: 50;" text="Search">
          <font>
             <Font name="System Bold Italic" size="17.0" />
          </font>
@@ -195,28 +195,28 @@
             </DropShadow>
          </effect>
       </Button>
-      <JFXTextArea fx:id="txtDescription" focusColor="TRANSPARENT" layoutX="585.0" layoutY="102.0" prefHeight="82.0" prefWidth="230.0" style="-fx-background-color: #ffffff;" unFocusColor="#ffffff00" />
-      <Label alignment="CENTER" layoutX="630.0" layoutY="75.0" prefHeight="25.0" prefWidth="138.0" text="Description" textFill="WHITE">
+      <JFXTextArea fx:id="txtDescription" focusColor="TRANSPARENT" layoutX="742.0" layoutY="113.0" prefHeight="82.0" prefWidth="230.0" style="-fx-background-color: #ffffff;" unFocusColor="#ffffff00" />
+      <Label alignment="CENTER" layoutX="787.0" layoutY="86.0" prefHeight="25.0" prefWidth="138.0" text="Description" textFill="WHITE">
          <font>
             <Font name="System Bold" size="12.0" />
          </font>
       </Label>
-      <JFXTextField fx:id="txtItemCode" layoutX="91.0" layoutY="94.0" prefHeight="26.0" prefWidth="173.0" promptText="Item Code" style="-fx-background-color: #ffffff;" unFocusColor="#4d4d4d00">
+      <JFXTextField fx:id="txtItemCode" layoutX="135.0" layoutY="107.0" prefHeight="26.0" prefWidth="173.0" promptText="Item Code" style="-fx-background-color: #ffffff;" unFocusColor="#4d4d4d00">
          <font>
             <Font name="System Bold" size="12.0" />
          </font>
       </JFXTextField>
-      <JFXTextField fx:id="txtUnitPrice" layoutX="324.0" layoutY="94.0" prefHeight="26.0" prefWidth="173.0" promptText="Item Code" style="-fx-background-color: #ffffff;" text="Unit Price" unFocusColor="#4d4d4d00">
+      <JFXTextField fx:id="txtUnitPrice" layoutX="413.0" layoutY="107.0" prefHeight="26.0" prefWidth="173.0" promptText="Item Code" style="-fx-background-color: #ffffff;" text="Unit Price" unFocusColor="#4d4d4d00">
          <font>
             <Font name="System Bold" size="12.0" />
          </font>
       </JFXTextField>
-      <JFXTextField fx:id="txtQty" layoutX="324.0" layoutY="158.0" prefHeight="26.0" prefWidth="173.0" promptText="Item Code" style="-fx-background-color: #ffffff;" text="Qty" unFocusColor="#4d4d4d00">
+      <JFXTextField fx:id="txtQty" layoutX="413.0" layoutY="168.0" prefHeight="26.0" prefWidth="173.0" promptText="Item Code" style="-fx-background-color: #ffffff;" text="Qty" unFocusColor="#4d4d4d00">
          <font>
             <Font name="System Bold" size="12.0" />
          </font>
       </JFXTextField>
-      <JFXTextField fx:id="txtPackSize" layoutX="91.0" layoutY="158.0" prefHeight="26.0" prefWidth="173.0" promptText="Pack Size" style="-fx-background-color: #ffffff;" unFocusColor="#4d4d4d00">
+      <JFXTextField fx:id="txtPackSize" layoutX="135.0" layoutY="168.0" prefHeight="26.0" prefWidth="173.0" promptText="Pack Size" style="-fx-background-color: #ffffff;" unFocusColor="#4d4d4d00">
          <font>
             <Font name="System Bold" size="12.0" />
          </font>
