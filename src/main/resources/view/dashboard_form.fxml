@@ -12,7 +12,7 @@
 
 <AnchorPane prefHeight="400.0" prefWidth="600.0" xmlns="http://javafx.com/javafx/25" xmlns:fx="http://javafx.com/fxml/1" fx:controller="controller.DashboardFormController">
    <children>
-      <Rectangle arcHeight="5.0" arcWidth="5.0" height="89.0" layoutX="14.0" layoutY="14.0" stroke="BLACK" strokeType="INSIDE" width="570.0">
+      <Rectangle arcHeight="5.0" arcWidth="5.0" height="81.0" layoutX="6.0" layoutY="6.0" stroke="TRANSPARENT" strokeType="INSIDE" width="590.0">
          <fill>
             <LinearGradient endX="1.0" endY="1.0">
                <stops>
@@ -37,7 +37,7 @@
             </DropShadow>
          </effect>
       </Rectangle>
-      <Label alignment="CENTER" layoutX="211.0" layoutY="29.0" prefHeight="58.0" prefWidth="175.0" text="Dashboard" textAlignment="CENTER" textFill="WHITE">
+      <Label alignment="CENTER" layoutX="210.0" layoutY="17.0" prefHeight="58.0" prefWidth="175.0" text="Dashboard" textAlignment="CENTER" textFill="WHITE">
          <font>
             <Font name="System Bold" size="30.0" />
          </font>
