@@ -1,14 +1,105 @@
 <?xml version="1.0" encoding="UTF-8"?>
 
-<?import java.lang.*?>
-<?import java.util.*?>
-<?import javafx.scene.*?>
-<?import javafx.scene.control.*?>
-<?import javafx.scene.layout.*?>
+<?import com.jfoenix.controls.JFXButton?>
+<?import javafx.scene.control.Label?>
+<?import javafx.scene.control.TableColumn?>
+<?import javafx.scene.control.TableView?>
+<?import javafx.scene.control.TextField?>
+<?import javafx.scene.effect.DropShadow?>
+<?import javafx.scene.layout.AnchorPane?>
+<?import javafx.scene.paint.Color?>
+<?import javafx.scene.paint.LinearGradient?>
+<?import javafx.scene.paint.Stop?>
+<?import javafx.scene.shape.Line?>
+<?import javafx.scene.shape.Rectangle?>
+<?import javafx.scene.text.Font?>
 
-<AnchorPane xmlns="http://javafx.com/javafx"
-            xmlns:fx="http://javafx.com/fxml"
-            fx:controller="controller.order_details.OrderDetailsFormController"
-            prefHeight="400.0" prefWidth="600.0">
 
+<AnchorPane prefHeight="591.0" prefWidth="904.0" xmlns="http://javafx.com/javafx/25" xmlns:fx="http://javafx.com/fxml/1" fx:controller="controller.order_details.OrderDetailsFormController">
+   <children>
+      <Rectangle height="66.0" layoutX="2.0" layoutY="3.0" stroke="WHITE" strokeType="INSIDE" width="899.0">
+         <fill>
+            <LinearGradient endX="1.0" endY="1.0">
+               <stops>
+                  <Stop>
+                     <color>
+                        <Color red="0.02370000071823597" green="0.017999999225139618" blue="0.36000001430511475" opacity="0.8579027652740479" />
+                     </color>
+                  </Stop>
+                  <Stop offset="1.0">
+                     <color>
+                        <Color red="0.15812864899635315" green="0.5473684072494507" blue="0.25543859601020813" />
+                     </color>
+                  </Stop>
+               </stops>
+            </LinearGradient>
+         </fill>
+         <effect>
+            <DropShadow>
+               <color>
+                  <Color opacity="0.6542553901672363" />
+               </color>
+            </DropShadow>
+         </effect>
+      </Rectangle>
+      <Label alignment="CENTER" layoutX="311.0" layoutY="3.0" prefHeight="66.0" prefWidth="282.0" text="Place Order" textFill="WHITE">
+         <font>
+            <Font name="System Bold" size="29.0" />
+         </font>
+      </Label>
+      <TableView fx:id="tblPlaceOrder" layoutX="23.0" layoutY="90.0" prefHeight="474.0" prefWidth="578.0" stylesheets="@css/style.css">
+        <columns>
+          <TableColumn fx:id="txtItemCode" prefWidth="80.79998397827148" text="ItemCode" />
+          <TableColumn fx:id="txtDescription" prefWidth="128.79998779296875" text="Description" />
+            <TableColumn fx:id="txtQuantity" prefWidth="89.60005187988281" text="Quantity" />
+            <TableColumn fx:id="txtUnitPrice" prefWidth="80.800048828125" text="Unit Price" />
+            <TableColumn fx:id="txtDiscount" prefWidth="88.0" text="Discount" />
+            <TableColumn fx:id="txtTotal" prefWidth="89.5999755859375" text="Total" />
+        </columns>
+      </TableView>
+      <TextField fx:id="txtCustomerId" layoutX="646.0" layoutY="163.0" onAction="#txtCustomerIdOnAction" onKeyPressed="#txtCustomerIdOnKeyPressed" prefHeight="26.0" prefWidth="83.0" promptText="Customer ID">
+         <font>
+            <Font name="System Bold" size="12.0" />
+         </font>
+      </TextField>
+      <TextField fx:id="txtCustomerName" layoutX="646.0" layoutY="200.0" prefHeight="26.0" prefWidth="214.0" promptText="Name" />
+      <TextField fx:id="txtUnitPrice" layoutX="769.0" layoutY="328.0" prefHeight="26.0" prefWidth="92.0" promptText="Unit Price" />
+      <TextField fx:id="txtDescription" layoutX="647.0" layoutY="291.0" prefHeight="26.0" prefWidth="214.0" promptText="Description" />
+      <Label fx:id="lblNetTotal" alignment="CENTER_RIGHT" layoutX="750.0" layoutY="470.0" prefHeight="40.0" prefWidth="101.0" text="0.0">
+         <font>
+            <Font name="System Bold" size="20.0" />
+         </font>
+      </Label>
+      <Label layoutX="641.0" layoutY="470.0" prefHeight="40.0" prefWidth="113.0" text="Net Total :">
+         <font>
+            <Font name="System Bold" size="20.0" />
+         </font>
+      </Label>
+      <TextField fx:id="txtDiscount" layoutX="646.0" layoutY="328.0" prefHeight="26.0" prefWidth="92.0" promptText="Discount" />
+      <Line endX="160.60003662109375" endY="1.52587890625E-5" layoutX="716.0" layoutY="147.0" startX="-86.5999755859375" startY="1.52587890625E-5" strokeWidth="2.0" />
+      <Label alignment="CENTER" layoutX="676.0" layoutY="100.0" prefHeight="40.0" prefWidth="154.0" text="Order Details">
+         <font>
+            <Font name="System Bold Italic" size="16.0" />
+         </font>
+      </Label>
+      <TextField fx:id="txtItemCode" layoutX="648.0" layoutY="253.0" onAction="#txtItemCodeOnAction" prefHeight="26.0" prefWidth="214.0" promptText="ItemCode">
+         <font>
+            <Font name="System Bold" size="12.0" />
+         </font>
+      </TextField>
+      <TextField fx:id="txtQuantity" layoutX="770.0" layoutY="366.0" prefHeight="26.0" prefWidth="92.0" promptText="Quantity" />
+      <TextField fx:id="txtCity" layoutX="774.0" layoutY="163.0" onAction="#txtCustomerIdOnAction" onKeyPressed="#txtCustomerIdOnKeyPressed" prefHeight="26.0" prefWidth="83.0" promptText="City" />
+      <JFXButton layoutX="640.0" layoutY="405.0" onAction="#btnAddtoCartOnAction" prefHeight="40.0" prefWidth="226.0" style="-fx-background-radius: 10; -fx-background-color: #16476A;" text="Add to Cart" textFill="WHITE">
+         <font>
+            <Font name="System Bold" size="12.0" />
+         </font>
+      </JFXButton>
+      <JFXButton fx:id="btnPlaceOrderOnAction" layoutX="640.0" layoutY="517.0" onAction="#btnPlaceOrderOnAction" prefHeight="40.0" prefWidth="226.0" style="-fx-background-radius: 10; -fx-background-color: #16476A;" text="Place Order" textFill="WHITE">
+         <font>
+            <Font name="System Bold" size="12.0" />
+         </font>
+      </JFXButton>
+      <Line endX="160.60003662109375" endY="1.52587890625E-5" layoutX="717.0" layoutY="240.0" startX="-86.5999755859375" startY="1.52587890625E-5" strokeWidth="2.0" />
+      <Line endX="160.60003662109375" endY="1.52587890625E-5" layoutX="719.0" layoutY="461.0" startX="-86.5999755859375" startY="1.52587890625E-5" strokeWidth="2.0" />
+   </children>
 </AnchorPane>
