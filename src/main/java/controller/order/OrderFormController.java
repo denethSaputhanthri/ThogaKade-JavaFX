@@ -10,7 +10,7 @@ import javafx.scene.control.DatePicker;
 import javafx.scene.control.TableColumn;
 import javafx.scene.control.TableView;
 import javafx.scene.control.cell.PropertyValueFactory;
-import model.dto.OrderDTO;
+import model.dto.Order;
 
 import java.net.URL;
 import java.time.LocalDate;
@@ -19,7 +19,7 @@ import java.util.ResourceBundle;
 
 public class OrderFormController implements Initializable {
     OrderInfoController orderInfoController=new OrderInfoController();
-    ObservableList<OrderDTO>orderDTOS= FXCollections.observableArrayList();
+    ObservableList<Order>orderDTOS= FXCollections.observableArrayList();
 
     @FXML
     private TableColumn<?, ?> colCustomerId;
@@ -34,7 +34,7 @@ public class OrderFormController implements Initializable {
     private DatePicker dpOrderDate;
 
     @FXML
-    private TableView<OrderDTO> tblOrderInfo;
+    private TableView<Order> tblOrderInfo;
 
     @FXML
     private JFXTextField txtCustomerId;
@@ -62,7 +62,7 @@ public class OrderFormController implements Initializable {
             if(orderDTO.getOrderId().equals(orderId) || orderDTO.getOrderDate().equals(localDate) || orderDTO.getCustomerId().equals(customerId) ){
                 tblOrderInfo.getSelectionModel().select(orderDTO);
                 tblOrderInfo.scrollTo(orderDTO);
-                OrderDTO order = orderDTO;
+                Order order = orderDTO;
                 setTextValue(order);
             }
         });
@@ -100,7 +100,7 @@ public class OrderFormController implements Initializable {
         orderDTOS.clear();
         clearFields();
     }
-    private void setTextValue(OrderDTO order){
+    private void setTextValue(Order order){
         txtCustomerId.setText(order.getCustomerId());
         txtOrderId.setText(order.getOrderId());
         dpOrderDate.setValue(order.getOrderDate());

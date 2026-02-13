@@ -12,7 +12,7 @@ import java.time.LocalDate;
 @NoArgsConstructor
 @ToString
 
-public class OrderDTO {
+public class Order {
     private String orderId;
     private LocalDate orderDate;
     private String customerId;

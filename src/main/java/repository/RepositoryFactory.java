@@ -2,7 +2,7 @@ package repository;
 
 import repository.custom.impl.CustomerRepositoryImpl;
 import repository.custom.impl.ItemRepositoryImpl;
-import service.custom.impl.ItemServiceImpl;
+import repository.custom.impl.OrderRepositoryImpl;
 import util.RepositoryType;
 
 public class RepositoryFactory {
@@ -18,6 +18,7 @@ public class RepositoryFactory {
         switch (type){
             case CUSTOMER : return (T) new CustomerRepositoryImpl();
             case ITEM: return (T) new ItemRepositoryImpl();
+            case ORDER: return (T) new OrderRepositoryImpl();
         }
         return null;
     }
