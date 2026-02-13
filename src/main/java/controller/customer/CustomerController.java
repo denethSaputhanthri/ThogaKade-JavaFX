@@ -2,22 +2,29 @@ package controller.customer;
 
 import com.jfoenix.controls.JFXTextField;
 import javafx.collections.FXCollections;
-import javafx.collections.ObservableList;
 import javafx.event.ActionEvent;
 import javafx.fxml.FXML;
 import javafx.fxml.Initializable;
 import javafx.scene.control.*;
 import javafx.scene.control.cell.PropertyValueFactory;
-import model.dto.CustomerDTO;
+
+import model.entity.Customer;
+import service.ServiceFactory;
+import service.custom.CustomerService;
+import service.custom.impl.CustomerServiceImpl;
+import util.ServiceType;
 
 import java.net.URL;
 import java.time.LocalDate;
+import java.util.ArrayList;
 import java.util.Arrays;
+import java.util.List;
 import java.util.ResourceBundle;
 
-public class CustomerFormController implements Initializable {
-    CustomerInfoController customerInfoController=new CustomerInfoController();
-    ObservableList<CustomerDTO>customerDTOS=FXCollections.observableArrayList();
+public class CustomerController implements Initializable {
+    CustomerService service=ServiceFactory.getInstance().getServiceType(ServiceType.CUSTOMER);
+
+
 
     @FXML
     private ComboBox<String> cmbCustomerTitle;
@@ -56,7 +63,7 @@ public class CustomerFormController implements Initializable {
     private DatePicker dpDateOfBirth;
 
     @FXML
-    private TableView<CustomerDTO> tblCustomer;
+    private TableView<Customer> tblCustomer;
 
     @FXML
     private JFXTextField txtAddress;
@@ -88,7 +95,9 @@ public class CustomerFormController implements Initializable {
         String province = cmbProvince.getValue();
         String postalCode = txtPostalCode.getText();
 
-        customerInfoController.addCustomer(id,customerTitle,customerName,dateOfBirth,salary,address,city,province,postalCode);
+        Customer customer=new Customer(id,customerTitle,customerName,dateOfBirth,salary,address,city,province,postalCode);
+
+        service.addCustomer(customer);
         automatically();
     }
 
@@ -96,7 +105,7 @@ public class CustomerFormController implements Initializable {
     void btnDeleteOnAction(ActionEvent event) {
         String id = txtCustomerId.getText();
 
-        customerInfoController.deletCustomer(id);
+        service.deleteCustomer(id);
         automatically();
     }
 
@@ -108,14 +117,6 @@ public class CustomerFormController implements Initializable {
     @FXML
     void btnSearchOnAction(ActionEvent event) {
         String id = txtCustomerId.getText();
-        customerInfoController.getAll().forEach(customerDTO -> {
-            if (customerDTO.getCustomerId().equals(id)){
-                CustomerDTO customer= customerDTO;
-                tblCustomer.getSelectionModel().select(customerDTO);
-                tblCustomer.scrollTo(customerDTO);
-                setTextValue(customer);
-            }
-        });
     }
 
     @FXML
@@ -130,15 +131,15 @@ public class CustomerFormController implements Initializable {
         String province = cmbProvince.getValue();
         String postalCode = txtPostalCode.getText();
 
-        customerInfoController.updateCustomer(id,customerTitle,customerName,dateOfBirth,salary,address,city,province,postalCode);
+        service.updateCustomer(new Customer(id,customerTitle,customerName,dateOfBirth,salary,address,city,province,postalCode));
         automatically();
     }
 
     @Override
-    public void initialize(URL url, ResourceBundle resourceBundle) {
+    public void initialize(URL url, ResourceBundle resourceBundle){
+
         cmbProvince.setItems(FXCollections.observableArrayList(Arrays.asList("Western"," Southern","Sabaragamuwa","Wayamba","Central","Eastern","Northern","North Western")));
         cmbCustomerTitle.setItems(FXCollections.observableArrayList(Arrays.asList("Mr","Ms","Miss")));
-
         colCustomerId.setCellValueFactory(new PropertyValueFactory<>("customerId"));
         colCustomerTitle.setCellValueFactory(new PropertyValueFactory<>("customerTitle"));
         colCustomerName.setCellValueFactory(new PropertyValueFactory<>("customerName"));
@@ -148,7 +149,7 @@ public class CustomerFormController implements Initializable {
         colCity.setCellValueFactory(new PropertyValueFactory<>("city"));
         colProvince.setCellValueFactory(new PropertyValueFactory<>("province"));
         colPostalCode.setCellValueFactory(new PropertyValueFactory<>("postalCode"));
-        tblCustomer.setItems(customerDTOS);
+
 
         tblCustomer.getSelectionModel().selectedItemProperty().addListener((observableValue, customerDTO, newValue) -> {
             if(newValue!=null){
@@ -165,7 +166,7 @@ public class CustomerFormController implements Initializable {
         });
         automatically();
     }
-    private void setTextValue(CustomerDTO customer){
+    private void setTextValue(Customer customer){
         txtCustomerId.setText(customer.getCustomerId());
         cmbCustomerTitle.setValue(customer.getCustomerTitle());
         txtCustomerName.setText(customer.getCustomerName());
@@ -173,12 +174,32 @@ public class CustomerFormController implements Initializable {
         txtSalary.setText(String.valueOf(customer.getSalary()));
         txtAddress.setText(customer.getAddress());
         txtCity.setText(customer.getCity());
-        cmbProvince.setValue(cmbProvince.getValue());
+        cmbProvince.setValue(customer.getProvince());
         txtPostalCode.setText(customer.getPostalCode());
     }
-    private void automatically(){
-        tblCustomer.setItems(customerInfoController.getAll());
-        customerDTOS.clear();
-    }
 
+    private void automatically() {
+        try {
+            List<Customer> all = new CustomerServiceImpl().getAll();
+            ArrayList<Customer> customerArrayList = new ArrayList<>();
+            all.forEach(customer -> {
+                customerArrayList.add(new Customer(
+                        customer.getCustomerId(),
+                        customer.getCustomerTitle(),
+                        customer.getCustomerName(),
+                        customer.getDob(),
+                        customer.getSalary(),
+                        customer.getAddress(),
+                        customer.getCity(),
+                        customer.getProvince(),
+                        customer.getPostalCode()
+                ));
+            });
+            tblCustomer.setItems(FXCollections.observableArrayList(customerArrayList));
+            customerArrayList.clear();
+        } catch (Exception e) {
+            throw new RuntimeException(e);
+        }
+
+    }
 }
