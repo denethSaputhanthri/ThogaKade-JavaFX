@@ -1,6 +1,8 @@
 package repository;
 
 import repository.custom.impl.CustomerRepositoryImpl;
+import repository.custom.impl.ItemRepositoryImpl;
+import service.custom.impl.ItemServiceImpl;
 import util.RepositoryType;
 
 public class RepositoryFactory {
@@ -15,8 +17,8 @@ public class RepositoryFactory {
     public <T extends SuperRepository>T getRepositoryType(RepositoryType type){
         switch (type){
             case CUSTOMER : return (T) new CustomerRepositoryImpl();
+            case ITEM: return (T) new ItemRepositoryImpl();
         }
-
         return null;
     }
 }
