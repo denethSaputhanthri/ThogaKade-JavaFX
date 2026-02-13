@@ -89,7 +89,7 @@
       </TextField>
       <TextField fx:id="txtQuantity" layoutX="770.0" layoutY="366.0" prefHeight="26.0" prefWidth="92.0" promptText="Quantity" />
       <TextField fx:id="txtCity" layoutX="774.0" layoutY="163.0" onAction="#txtCustomerIdOnAction" onKeyPressed="#txtCustomerIdOnKeyPressed" prefHeight="26.0" prefWidth="83.0" promptText="City" />
-      <JFXButton layoutX="640.0" layoutY="405.0" onAction="#btnAddtoCartOnAction" prefHeight="40.0" prefWidth="226.0" style="-fx-background-radius: 10; -fx-background-color: #16476A;" text="Add to Cart" textFill="WHITE">
+      <JFXButton layoutX="640.0" layoutY="405.0" onAction="#btnAddToCartOnAction" prefHeight="40.0" prefWidth="226.0" style="-fx-background-radius: 10; -fx-background-color: #16476A;" text="Add to Cart" textFill="WHITE">
          <font>
             <Font name="System Bold" size="12.0" />
          </font>
