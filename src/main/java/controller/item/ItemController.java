@@ -10,14 +10,17 @@ import javafx.fxml.Initializable;
 import javafx.scene.control.TableColumn;
 import javafx.scene.control.TableView;
 import javafx.scene.control.cell.PropertyValueFactory;
-import model.dto.ItemDTO;
+import model.dto.Item;
+import service.ServiceFactory;
+import service.custom.ItemService;
+import util.ServiceType;
 
 import java.net.URL;
+import java.util.List;
 import java.util.ResourceBundle;
 
-public class ItemFormController implements Initializable {
-    ItemInfoController itemInfoController=new ItemInfoController();
-    ObservableList<ItemDTO>itemDTOS= FXCollections.observableArrayList();
+public class ItemController implements Initializable {
+    ItemService service=ServiceFactory.getInstance().getServiceType(ServiceType.ITEM);
 
     @FXML
     private TableColumn<?, ?> colDescription;
@@ -35,7 +38,7 @@ public class ItemFormController implements Initializable {
     private TableColumn<?, ?> colUnitPrice;
 
     @FXML
-    private TableView<ItemDTO> tblItem;
+    private TableView<Item> tblItem;
 
     @FXML
     private JFXTextArea txtDescription;
@@ -60,7 +63,7 @@ public class ItemFormController implements Initializable {
         Double unitPrice = Double.valueOf(txtUnitPrice.getText());
         Integer qty = Integer.valueOf(txtQty.getText());
 
-        itemInfoController.addItem(itemCode,description,packSize,unitPrice,qty);
+        service.addItem(new Item(itemCode,description,packSize,unitPrice,qty));
         autoload();
         clearFields();
     }
@@ -69,7 +72,7 @@ public class ItemFormController implements Initializable {
     void btnDeleteOnAction(ActionEvent event) {
         String itemCode = txtItemCode.getText();
 
-        itemInfoController.deleteItem(itemCode);
+        service.deleteItem(itemCode);
         autoload();
         clearFields();
     }
@@ -82,14 +85,6 @@ public class ItemFormController implements Initializable {
     @FXML
     void btnSearchOnAction(ActionEvent event) {
         String itemCode = txtItemCode.getText();
-        itemInfoController.getAll().forEach(itemDTO -> {
-            if(itemDTO.getItemCode().equals(itemCode)){
-                tblItem.getSelectionModel().select(itemDTO);
-                tblItem.scrollTo(itemDTO);
-              ItemDTO item= itemDTO;
-              setTextValue(item);
-            }
-        });
     }
 
     @FXML
@@ -100,7 +95,7 @@ public class ItemFormController implements Initializable {
         Double unitPrice = Double.valueOf(txtUnitPrice.getText());
         Integer qty = Integer.valueOf(txtQty.getText());
 
-        itemInfoController.updateItem(itemCode,description,packSize,unitPrice,qty);
+        service.updateItem(new Item(itemCode,description,packSize,unitPrice,qty));
         autoload();
         clearFields();
     }
@@ -112,7 +107,7 @@ public class ItemFormController implements Initializable {
         colPackSize.setCellValueFactory(new PropertyValueFactory<>("packSize"));
         colUnitPrice.setCellValueFactory(new PropertyValueFactory<>("unitPrice"));
         colQtyOnHand.setCellValueFactory(new PropertyValueFactory<>("qtyOnHand"));
-        tblItem.setItems(itemDTOS);
+
 
         tblItem.getSelectionModel().selectedItemProperty().addListener((observableValue, itemDTO, newValue) ->{
             if(newValue!=null){
@@ -125,7 +120,7 @@ public class ItemFormController implements Initializable {
         } );
         autoload();
     }
-    private void setTextValue(ItemDTO item){
+    private void setTextValue(Item item){
         txtItemCode.setText(item.getItemCode());
         txtDescription.setText(item.getDescription());
         txtPackSize.setText(item.getPackSize());
@@ -133,8 +128,23 @@ public class ItemFormController implements Initializable {
         txtUnitPrice.setText(String.valueOf(item.getUnitPrice()));
     }
     private void autoload(){
-        tblItem.setItems(itemInfoController.getAll());
-        itemDTOS.clear();
+        try {
+            List<Item> all = service.getAll();
+            ObservableList<Item>itemObservableList=FXCollections.observableArrayList();
+            all.forEach(item -> {
+                itemObservableList.add(new Item(
+                        item.getItemCode(),
+                        item.getDescription(),
+                        item.getPackSize(),
+                        item.getUnitPrice(),
+                        item.getQtyOnHand()
+                ));
+            });
+            tblItem.setItems(itemObservableList);
+
+        } catch (Exception e) {
+            throw new RuntimeException(e);
+        }
     }
     private void clearFields(){
         txtItemCode.clear();
