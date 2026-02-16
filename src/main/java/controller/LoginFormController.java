@@ -31,6 +31,8 @@ public class LoginFormController {
             stage.setTitle("Dashboard.lk");
             stage.show();
             clearFlieds();
+            stage.setFullScreen(true);
+
             new Alert(Alert.AlertType.CONFIRMATION,"Login Success").show();
         }else {
             new Alert(Alert.AlertType.ERROR,"Login Error").show();

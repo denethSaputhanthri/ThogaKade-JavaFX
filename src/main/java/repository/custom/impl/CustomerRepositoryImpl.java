@@ -6,8 +6,10 @@ import javafx.collections.FXCollections;
 import javafx.collections.ObservableList;
 import model.entity.Customer;
 import repository.custom.CustomerRepository;
+import util.CrudUtil;
 
 import java.sql.*;
+import java.util.ArrayList;
 import java.util.List;
 
 public class CustomerRepositoryImpl implements CustomerRepository {
@@ -15,18 +17,17 @@ public class CustomerRepositoryImpl implements CustomerRepository {
     @Override
     public Boolean create(Customer customer) {
         try {
-            Connection connection = DBConnection.getInstance().getConnection();
-            PreparedStatement preparedStatement = connection.prepareStatement("insert into customer values (?,?,?,?,?,?,?,?,?)");
-            preparedStatement.setObject(1,customer.getCustomerId());
-            preparedStatement.setObject(2,customer.getCustomerTitle());
-            preparedStatement.setObject(3,customer.getCustomerName());
-            preparedStatement.setObject(4,customer.getDob());
-            preparedStatement.setObject(5,customer.getSalary());
-            preparedStatement.setObject(6,customer.getAddress());
-            preparedStatement.setObject(7,customer.getCity());
-            preparedStatement.setObject(8,customer.getProvince());
-            preparedStatement.setObject(9,customer.getPostalCode());
-            return preparedStatement.executeUpdate()>0;
+            return CrudUtil.execute("INSERT INTO customer VALUES(?,?,?,?,?,?,?,?,?)",
+                    customer.getCustomerId(),
+                    customer.getCustomerTitle(),
+                    customer.getCustomerName(),
+                    customer.getDob(),
+                    customer.getSalary(),
+                    customer.getAddress(),
+                    customer.getCity(),
+                    customer.getProvince(),
+                    customer.getPostalCode()
+            );
         } catch (SQLException e) {
             throw new RuntimeException(e);
         }
@@ -35,18 +36,18 @@ public class CustomerRepositoryImpl implements CustomerRepository {
     @Override
     public Boolean update(Customer customer) {
         try {
-            Connection connection = DBConnection.getInstance().getConnection();
-            PreparedStatement preparedStatement = connection.prepareStatement("UPDATE customer SET CustTitle=?, CustName=?, DOB=?, salary=?, CustAddress=?, City=?, Province=?, PostalCode=? WHERE CustID=? ");
-            preparedStatement.setObject(1,customer.getCustomerTitle());
-            preparedStatement.setObject(2,customer.getCustomerName());
-            preparedStatement.setObject(3,customer.getDob());
-            preparedStatement.setObject(4,customer.getSalary());
-            preparedStatement.setObject(5,customer.getAddress());
-            preparedStatement.setObject(6,customer.getCity());
-            preparedStatement.setObject(7,customer.getProvince());
-            preparedStatement.setObject(8,customer.getPostalCode());
-            preparedStatement.setObject(9,customer.getCustomerId());
-            return preparedStatement.executeUpdate()>0;
+            return CrudUtil.execute("UPDATE customer SET CustTitle=?, CustName=?, DOB=?, salary=?, CustAddress=?, City=?, Province=?, PostalCode=? WHERE CustID=? ",
+                    customer.getCustomerTitle(),
+                    customer.getCustomerName(),
+                    customer.getDob(),
+                    customer.getSalary(),
+                    customer.getAddress(),
+                    customer.getCity(),
+                    customer.getProvince(),
+                    customer.getPostalCode(),
+                    customer.getCustomerId()
+            );
+
         } catch (SQLException e) {
             throw new RuntimeException(e);
         }
@@ -55,11 +56,7 @@ public class CustomerRepositoryImpl implements CustomerRepository {
     @Override
     public Boolean deleteById(String id) {
         try {
-            Connection connection = DBConnection.getInstance().getConnection();
-            PreparedStatement preparedStatement = connection.prepareStatement("DELETE FROM customer WHERE Custid=?");
-            preparedStatement.setObject(1,id);
-            preparedStatement.executeUpdate();
-            return preparedStatement.executeUpdate()>0;
+            return CrudUtil.execute("DELETE FROM customer WHERE CustID=?", id);
         } catch (SQLException e) {
             throw new RuntimeException(e);
         }
@@ -74,26 +71,29 @@ public class CustomerRepositoryImpl implements CustomerRepository {
     public List<Customer> getAll() {
         ObservableList<Customer> customerDTOS= FXCollections.observableArrayList();
         try {
-            Connection connection = DBConnection.getInstance().getConnection();
-            Statement statement = connection.createStatement();
-            ResultSet resultSet = statement.executeQuery("select * from customer");
+            ResultSet resultSet = CrudUtil.execute("SELECT * FROM customer");
+
+            ArrayList<Customer> customerArrayList = new ArrayList<>();
+
             while (resultSet.next()){
-                Customer customer=new Customer(
-                        resultSet.getString("CustID"),
-                        resultSet.getString("CustTitle"),
-                        resultSet.getString("CustName"),
-                        resultSet.getDate("DOB").toLocalDate(),
-                        resultSet.getDouble("salary"),
-                        resultSet.getString("CustAddress"),
-                        resultSet.getString("City"),
-                        resultSet.getString("Province"),
-                        resultSet.getString("PostalCode")
+                customerArrayList.add(
+                        new Customer(
+                                resultSet.getString(1),
+                                resultSet.getString(2),
+                                resultSet.getString(3),
+                                resultSet.getDate(4).toLocalDate(),
+                                resultSet.getDouble(5),
+                                resultSet.getString(6),
+                                resultSet.getString(7),
+                                resultSet.getString(8),
+                                resultSet.getString(9)
+                        )
                 );
-                customerDTOS.add(customer);
             }
+
+            return customerArrayList;
         } catch (SQLException e) {
             throw new RuntimeException(e);
         }
-        return customerDTOS;
     }
 }
