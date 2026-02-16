@@ -54,4 +54,7 @@ public class DashboardFormController {
         stage.setTitle("Oder.lk");
         stage.show();
     }
+
+    public void btnItemOnAction(ActionEvent actionEvent) {
+    }
 }
