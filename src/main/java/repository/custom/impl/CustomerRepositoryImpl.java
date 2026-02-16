@@ -37,7 +37,6 @@ public class CustomerRepositoryImpl implements CustomerRepository {
     public Boolean update(Customer customer) {
         try {
             return CrudUtil.execute("UPDATE customer SET CustTitle=?, CustName=?, DOB=?, salary=?, CustAddress=?, City=?, Province=?, PostalCode=? WHERE CustID=? ",
-                    customer.getCustomerId(),
                     customer.getCustomerTitle(),
                     customer.getCustomerName(),
                     customer.getDob(),
@@ -45,7 +44,8 @@ public class CustomerRepositoryImpl implements CustomerRepository {
                     customer.getAddress(),
                     customer.getCity(),
                     customer.getProvince(),
-                    customer.getPostalCode()
+                    customer.getPostalCode(),
+                    customer.getCustomerId()
             );
 
         } catch (SQLException e) {
