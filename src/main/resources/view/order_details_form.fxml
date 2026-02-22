@@ -14,7 +14,6 @@
 <?import javafx.scene.shape.Rectangle?>
 <?import javafx.scene.text.Font?>
 
-
 <AnchorPane prefHeight="591.0" prefWidth="904.0" xmlns="http://javafx.com/javafx/25" xmlns:fx="http://javafx.com/fxml/1" fx:controller="controller.order_details.OrderDetailsFormController">
    <children>
       <Rectangle height="66.0" layoutX="2.0" layoutY="3.0" stroke="WHITE" strokeType="INSIDE" width="899.0">
@@ -49,12 +48,12 @@
       </Label>
       <TableView fx:id="tblPlaceOrder" layoutX="23.0" layoutY="90.0" prefHeight="474.0" prefWidth="578.0" stylesheets="@css/style.css">
         <columns>
-          <TableColumn fx:id="txtItemCode" prefWidth="80.79998397827148" text="ItemCode" />
-          <TableColumn fx:id="txtDescription" prefWidth="128.79998779296875" text="Description" />
-            <TableColumn fx:id="txtQuantity" prefWidth="89.60005187988281" text="Quantity" />
-            <TableColumn fx:id="txtUnitPrice" prefWidth="80.800048828125" text="Unit Price" />
-            <TableColumn fx:id="txtDiscount" prefWidth="88.0" text="Discount" />
-            <TableColumn fx:id="txtTotal" prefWidth="89.5999755859375" text="Total" />
+          <TableColumn fx:id="colItemCode" prefWidth="80.79998397827148" text="ItemCode" />
+          <TableColumn fx:id="colDescription" prefWidth="128.79998779296875" text="Description" />
+            <TableColumn fx:id="colQuantity" prefWidth="89.60005187988281" text="Quantity" />
+            <TableColumn fx:id="colUnitPrice" prefWidth="80.800048828125" text="Unit Price" />
+            <TableColumn fx:id="colDiscount" prefWidth="88.0" text="Discount" />
+            <TableColumn fx:id="colTotal" prefWidth="89.5999755859375" text="Total" />
         </columns>
       </TableView>
       <TextField fx:id="txtCustomerId" layoutX="646.0" layoutY="163.0" onAction="#txtCustomerIdOnAction" onKeyPressed="#txtCustomerIdOnKeyPressed" prefHeight="26.0" prefWidth="83.0" promptText="Customer ID">
