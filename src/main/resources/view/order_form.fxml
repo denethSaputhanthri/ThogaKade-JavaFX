@@ -14,10 +14,9 @@
 <?import javafx.scene.shape.Rectangle?>
 <?import javafx.scene.text.Font?>
 
-
-<AnchorPane prefHeight="578.0" prefWidth="728.0" xmlns="http://javafx.com/javafx/25" xmlns:fx="http://javafx.com/fxml/1" fx:controller="controller.order.OrderController">
+<AnchorPane prefHeight="623.0" prefWidth="877.0" xmlns="http://javafx.com/javafx/25" xmlns:fx="http://javafx.com/fxml/1" fx:controller="controller.order.OrderController">
    <children>
-      <Rectangle arcWidth="5.0" height="88.0" layoutX="3.0" layoutY="4.0" stroke="BLACK" strokeType="INSIDE" strokeWidth="0.0" width="721.0">
+      <Rectangle height="66.0" layoutX="39.0" layoutY="1.0" stroke="WHITE" strokeType="INSIDE" width="785.0">
          <fill>
             <LinearGradient endX="1.0" endY="1.0">
                <stops>
@@ -42,30 +41,30 @@
             </DropShadow>
          </effect>
       </Rectangle>
-      <Label alignment="CENTER" layoutX="185.0" layoutY="15.0" prefHeight="66.0" prefWidth="358.0" text="Order Info" textFill="WHITE">
+      <Label alignment="CENTER" layoutX="219.0" layoutY="1.0" prefHeight="66.0" prefWidth="358.0" text="Order Info" textFill="WHITE">
          <font>
             <Font name="System Bold" size="29.0" />
          </font>
       </Label>
-      <TableView fx:id="tblOrderInfo" layoutX="58.0" layoutY="284.0" prefHeight="274.0" prefWidth="607.0" stylesheets="@css/style.css">
+      <TableView fx:id="tblOrderInfo" layoutX="96.0" layoutY="217.0" prefHeight="342.0" prefWidth="670.0" stylesheets="@css/style.css">
         <columns>
-          <TableColumn fx:id="colOrderId" prefWidth="167.19995880126953" text="Order ID" />
-          <TableColumn fx:id="colOrderDate" prefWidth="251.20001220703125" text="Order Date" />
-            <TableColumn fx:id="colCustomerId" prefWidth="165.60000610351562" text="Customer ID" />
+          <TableColumn fx:id="colOrderId" prefWidth="189.60003280639648" text="Order ID" />
+          <TableColumn fx:id="colOrderDate" prefWidth="243.9999542236328" text="Order Date" />
+            <TableColumn fx:id="colCustomerId" prefWidth="212.7999267578125" text="Customer ID" />
         </columns>
       </TableView>
-      <JFXTextField fx:id="txtOrderId" focusColor="#d6d6d600" layoutX="58.0" layoutY="141.0" prefHeight="26.0" prefWidth="178.0" promptText="Order Id" style="-fx-background-color: #fffefe;" unFocusColor="#ffffff00">
+      <JFXTextField fx:id="txtOrderId" focusColor="#d6d6d600" layoutX="96.0" layoutY="99.0" prefHeight="26.0" prefWidth="178.0" promptText="Order Id" style="-fx-background-color: #fffefe;" unFocusColor="#ffffff00">
          <font>
             <Font name="System Bold" size="12.0" />
          </font>
       </JFXTextField>
-      <JFXTextField fx:id="txtCustomerId" layoutX="486.0" layoutY="141.0" prefHeight="26.0" prefWidth="178.0" promptText="Customer Id" style="-fx-background-color: #fffefe;" unFocusColor="#ffffff00">
+      <JFXTextField fx:id="txtCustomerId" layoutX="341.0" layoutY="99.0" prefHeight="26.0" prefWidth="178.0" promptText="Customer Id" style="-fx-background-color: #fffefe;" unFocusColor="#ffffff00">
          <font>
             <Font name="System Bold" size="12.0" />
          </font>
       </JFXTextField>
-      <DatePicker fx:id="dpOrderDate" layoutX="274.0" layoutY="141.0" promptText="Order Date" />
-      <JFXButton layoutX="78.0" layoutY="213.0" onAction="#btnSearchOnAction" prefHeight="46.0" prefWidth="106.0" style="-fx-background-color: #16476A; -fx-background-radius: 25;" text="search">
+      <DatePicker fx:id="dpOrderDate" layoutX="576.0" layoutY="99.0" promptText="Order Date" />
+      <JFXButton layoutX="97.0" layoutY="157.0" onAction="#btnSearchOnAction" prefHeight="38.0" prefWidth="156.0" style="-fx-background-color: #16476A; -fx-background-radius: 15;" text="search">
          <font>
             <Font name="System Bold Italic" size="17.0" />
          </font>
@@ -93,7 +92,7 @@
             </DropShadow>
          </effect>
       </JFXButton>
-      <JFXButton layoutX="543.0" layoutY="213.0" onAction="#btnDeleteOnAction" prefHeight="46.0" prefWidth="106.0" style="-fx-background-color: #16476A; -fx-background-radius: 25;" text="Delete">
+      <JFXButton layoutX="610.0" layoutY="157.0" onAction="#btnDeleteOnAction" prefHeight="38.0" prefWidth="156.0" style="-fx-background-color: #16476A; -fx-background-radius: 15;" text="Delete">
          <font>
             <Font name="System Bold Italic" size="17.0" />
          </font>
@@ -121,7 +120,7 @@
             </DropShadow>
          </effect>
       </JFXButton>
-      <JFXButton layoutX="311.0" layoutY="213.0" onAction="#btnUpdateOnAction" prefHeight="46.0" prefWidth="106.0" style="-fx-background-color: #16476A; -fx-background-radius: 25;" text="Update">
+      <JFXButton layoutX="342.0" layoutY="157.0" onAction="#btnUpdateOnAction" prefHeight="38.0" prefWidth="156.0" style="-fx-background-color: #16476A; -fx-background-radius: 15;" text="Update">
          <font>
             <Font name="System Bold Italic" size="17.0" />
          </font>
