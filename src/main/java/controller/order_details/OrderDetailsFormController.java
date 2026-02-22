@@ -15,6 +15,24 @@ public class OrderDetailsFormController {
     private JFXButton btnPlaceOrderOnAction;
 
     @FXML
+    private TableColumn<?, ?> colDescription;
+
+    @FXML
+    private TableColumn<?, ?> colDiscount;
+
+    @FXML
+    private TableColumn<?, ?> colItemCode;
+
+    @FXML
+    private TableColumn<?, ?> colQuantity;
+
+    @FXML
+    private TableColumn<?, ?> colTotal;
+
+    @FXML
+    private TableColumn<?, ?> colUnitPrice;
+
+    @FXML
     private Label lblNetTotal;
 
     @FXML
@@ -40,9 +58,6 @@ public class OrderDetailsFormController {
 
     @FXML
     private TextField txtQuantity;
-
-    @FXML
-    private TableColumn<?, ?> txtTotal;
 
     @FXML
     private TextField txtUnitPrice;
