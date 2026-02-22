@@ -1,0 +1,66 @@
+.root {
+    -fx-background-color: #f4f6f9;
+    -fx-font-family: "Segoe UI";
+}
+
+/* Sidebar */
+.sidebar {
+    -fx-background-color: #0f766e;
+}
+
+.logo {
+    -fx-text-fill: white;
+    -fx-font-size: 20px;
+    -fx-font-weight: bold;
+}
+
+.menu-btn {
+    -fx-background-color: transparent;
+    -fx-text-fill: white;
+    -fx-font-size: 14px;
+}
+
+.menu-btn:hover {
+    -fx-background-color: #115e59;
+}
+
+/* Topbar */
+.topbar {
+    -fx-background-color: white;
+    -fx-border-color: #e5e7eb;
+}
+
+.action-btn {
+    -fx-background-color: #0f766e;
+    -fx-text-fill: white;
+    -fx-background-radius: 20;
+}
+
+/* Cards */
+.balance-card {
+    -fx-background-color: #0f766e;
+    -fx-padding: 20;
+    -fx-background-radius: 15;
+}
+
+.card-title {
+    -fx-text-fill: white;
+}
+
+.balance-text {
+    -fx-text-fill: white;
+    -fx-font-size: 28px;
+    -fx-font-weight: bold;
+}
+
+.stat-card {
+    -fx-background-color: white;
+    -fx-padding: 20;
+    -fx-background-radius: 15;
+    -fx-effect: dropshadow(gaussian, rgba(0,0,0,0.08), 10, 0, 0, 4);
+}
+
+.stat-value {
+    -fx-font-size: 18px;
+    -fx-font-weight: bold;
+}
