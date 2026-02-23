@@ -112,7 +112,15 @@ public class OrderDetailsFormController implements Initializable {
           assert newValue != null;
           setCustomerDataTable((String) newValue);
         });
+        cmbItemCode.getSelectionModel().selectedItemProperty().addListener((observableValue, old, newValue) -> {
+            setItemDataTable((String) newValue);
+        });
 
+    }
+
+    private void setItemDataTable(String itemCode) {
+        Item item = itemService.searchById(itemCode);
+        System.out.println(item);
     }
 
     private void loadItemCodes() {

@@ -80,6 +80,18 @@ public class ItemRepositoryImpl implements ItemRepository {
 
     @Override
     public Item searchById(String itemCode) {
-        return null;
+        try {
+            ResultSet resultSet =CrudUtil.execute("select * from item where ItemCode=?",itemCode);
+            resultSet.next();
+            return new Item(
+                    resultSet.getString(1),
+                    resultSet.getString(2),
+                    resultSet.getString(3),
+                    resultSet.getDouble(4),
+                    resultSet.getInt(5)
+            );
+        } catch (SQLException e) {
+            throw new RuntimeException(e);
+        }
     }
 }
