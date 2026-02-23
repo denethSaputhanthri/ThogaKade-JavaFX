@@ -1,18 +1,32 @@
 package controller.order_details;
 
 import com.jfoenix.controls.JFXButton;
+import com.jfoenix.controls.JFXComboBox;
+import javafx.collections.FXCollections;
 import javafx.event.ActionEvent;
 import javafx.fxml.FXML;
+import javafx.fxml.Initializable;
 import javafx.scene.control.Label;
 import javafx.scene.control.TableColumn;
 import javafx.scene.control.TableView;
 import javafx.scene.control.TextField;
 import javafx.scene.input.KeyEvent;
+import service.ServiceFactory;
+import service.custom.CustomerService;
+import util.ServiceType;
 
-public class OrderDetailsFormController {
+import java.net.URL;
+import java.util.List;
+import java.util.ResourceBundle;
+
+public class OrderDetailsFormController implements Initializable {
+    CustomerService customerService =ServiceFactory.getInstance().getServiceType(ServiceType.CUSTOMER);
 
     @FXML
     private JFXButton btnPlaceOrderOnAction;
+
+    @FXML
+    private JFXComboBox cmbCustomerId;
 
     @FXML
     private TableColumn<?, ?> colDescription;
@@ -64,7 +78,6 @@ public class OrderDetailsFormController {
 
     @FXML
     void btnAddToCartOnAction(ActionEvent event) {
-
     }
 
     @FXML
@@ -86,5 +99,18 @@ public class OrderDetailsFormController {
     void txtItemCodeOnAction(ActionEvent event) {
 
     }
+
+    @Override
+    public void initialize(URL url, ResourceBundle resourceBundle) {
+        loadCustomerIDs();
+
+    }
+
+
+    private void loadCustomerIDs(){
+        List<String> customerIDs = customerService.getAllCustomerIDs();
+        cmbCustomerId.setItems(FXCollections.observableArrayList(customerIDs));
+    }
+
 
 }
