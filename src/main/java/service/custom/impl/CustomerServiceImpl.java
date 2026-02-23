@@ -33,8 +33,8 @@ public class CustomerServiceImpl implements CustomerService {
     }
 
     @Override
-    public boolean searchById(String id) {
-        return false;
+    public Customer searchById(String id) {
+        return repository.searchById(id);
     }
 
     @Override
