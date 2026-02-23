@@ -11,7 +11,7 @@
 <?import javafx.scene.layout.AnchorPane?>
 <?import javafx.scene.text.Font?>
 
-<AnchorPane prefHeight="536.0" prefWidth="776.0" xmlns="http://javafx.com/javafx/25" xmlns:fx="http://javafx.com/fxml/1" fx:controller="controller.LoginFormController">
+<AnchorPane prefHeight="536.0" prefWidth="776.0" xmlns="http://javafx.com/javafx/25" xmlns:fx="http://javafx.com/fxml/1" fx:controller="controller.login.LoginFormController">
    <children>
       <JFXButton alignment="CENTER" layoutX="477.0" layoutY="394.0" onAction="#btnReloadOnAction" prefHeight="34.0" prefWidth="246.0" style="-fx-background-color: #016B61; -fx-background-radius: 5;" text="Reload" textAlignment="CENTER" textFill="WHITE">
          <font>

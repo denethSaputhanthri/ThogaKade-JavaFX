@@ -8,8 +8,6 @@
 <?import javafx.scene.control.TableColumn?>
 <?import javafx.scene.control.TableView?>
 <?import javafx.scene.effect.DropShadow?>
-<?import javafx.scene.image.Image?>
-<?import javafx.scene.image.ImageView?>
 <?import javafx.scene.layout.AnchorPane?>
 <?import javafx.scene.paint.Color?>
 <?import javafx.scene.paint.LinearGradient?>
@@ -17,14 +15,195 @@
 <?import javafx.scene.shape.Rectangle?>
 <?import javafx.scene.text.Font?>
 
-<AnchorPane prefHeight="660.0" prefWidth="1095.0" stylesheets="@css/style.css" xmlns="http://javafx.com/javafx/25" xmlns:fx="http://javafx.com/fxml/1" fx:controller="controller.customer.CustomerController">
+<AnchorPane prefHeight="695.0" prefWidth="871.0" style="-fx-background-color: white; -fx-background-radius: 15; -fx-effect: dropshadow(gaussian, rgba(0,0,0,0.1), 10, 0, 0, 5);" stylesheets="@css/style.css" xmlns="http://javafx.com/javafx/25" xmlns:fx="http://javafx.com/fxml/1" fx:controller="controller.customer.CustomerController">
    <children>
-      <ImageView fitHeight="736.0" fitWidth="1119.0" layoutX="-23.0" layoutY="-25.0" opacity="0.59" pickOnBounds="true" preserveRatio="true">
-         <image>
-            <Image url="@img/What’s%20Happening%20to%20Customer%20Service_.jpg" />
-         </image>
-      </ImageView>
-      <Rectangle arcWidth="5.0" height="66.0" layoutX="3.0" layoutY="5.0" stroke="BLACK" strokeType="INSIDE" strokeWidth="0.0" width="1088.0">
+      <JFXButton layoutX="22.0" layoutY="234.0" onAction="#btnSearchOnAction" prefHeight="46.0" prefWidth="106.0" style="-fx-background-color: #16476A; -fx-background-radius: 25;" text="search">
+         <font>
+            <Font name="System Bold Italic" size="17.0" />
+         </font>
+         <textFill>
+            <LinearGradient endX="1.0" endY="1.0" startX="0.8106060461564498">
+               <stops>
+                  <Stop>
+                     <color>
+                        <Color red="1.0" green="1.0" blue="1.0" />
+                     </color>
+                  </Stop>
+                  <Stop offset="1.0">
+                     <color>
+                        <Color red="0.5894736647605896" green="0.5894736647605896" blue="0.5894736647605896" />
+                     </color>
+                  </Stop>
+               </stops>
+            </LinearGradient>
+         </textFill>
+         <effect>
+            <DropShadow offsetY="5.0">
+               <color>
+                  <Color opacity="0.7325227856636047" />
+               </color>
+            </DropShadow>
+         </effect>
+      </JFXButton>
+      <JFXButton layoutX="558.0" layoutY="234.0" onAction="#btnDeleteOnAction" prefHeight="46.0" prefWidth="106.0" style="-fx-background-color: #16476A; -fx-background-radius: 25;" text="Delete">
+         <font>
+            <Font name="System Bold Italic" size="17.0" />
+         </font>
+         <textFill>
+            <LinearGradient endX="1.0" endY="1.0" startX="0.8106060461564498">
+               <stops>
+                  <Stop>
+                     <color>
+                        <Color red="1.0" green="1.0" blue="1.0" />
+                     </color>
+                  </Stop>
+                  <Stop offset="1.0">
+                     <color>
+                        <Color red="0.5894736647605896" green="0.5894736647605896" blue="0.5894736647605896" />
+                     </color>
+                  </Stop>
+               </stops>
+            </LinearGradient>
+         </textFill>
+         <effect>
+            <DropShadow offsetY="5.0">
+               <color>
+                  <Color opacity="0.7325227856636047" />
+               </color>
+            </DropShadow>
+         </effect>
+      </JFXButton>
+      <JFXButton layoutX="734.0" layoutY="234.0" onAction="#btnReloadOnAction" prefHeight="46.0" prefWidth="106.0" style="-fx-background-color: #16476A; -fx-background-radius: 25;" text="Reload">
+         <font>
+            <Font name="System Bold Italic" size="17.0" />
+         </font>
+         <textFill>
+            <LinearGradient endX="1.0" endY="1.0" startX="0.8106060461564498">
+               <stops>
+                  <Stop>
+                     <color>
+                        <Color red="1.0" green="1.0" blue="1.0" />
+                     </color>
+                  </Stop>
+                  <Stop offset="1.0">
+                     <color>
+                        <Color red="0.5894736647605896" green="0.5894736647605896" blue="0.5894736647605896" />
+                     </color>
+                  </Stop>
+               </stops>
+            </LinearGradient>
+         </textFill>
+         <effect>
+            <DropShadow offsetY="5.0">
+               <color>
+                  <Color opacity="0.7325227856636047" />
+               </color>
+            </DropShadow>
+         </effect>
+      </JFXButton>
+      <JFXButton layoutX="383.0" layoutY="234.0" onAction="#btnUpdateOnAction" prefHeight="46.0" prefWidth="106.0" style="-fx-background-color: #16476A; -fx-background-radius: 25;" text="Update">
+         <font>
+            <Font name="System Bold Italic" size="17.0" />
+         </font>
+         <textFill>
+            <LinearGradient endX="1.0" endY="1.0" startX="0.8106060461564498">
+               <stops>
+                  <Stop>
+                     <color>
+                        <Color red="1.0" green="1.0" blue="1.0" />
+                     </color>
+                  </Stop>
+                  <Stop offset="1.0">
+                     <color>
+                        <Color red="0.5894736647605896" green="0.5894736647605896" blue="0.5894736647605896" />
+                     </color>
+                  </Stop>
+               </stops>
+            </LinearGradient>
+         </textFill>
+         <effect>
+            <DropShadow offsetY="5.0">
+               <color>
+                  <Color opacity="0.7325227856636047" />
+               </color>
+            </DropShadow>
+         </effect>
+      </JFXButton>
+      <JFXButton layoutX="193.0" layoutY="234.0" onAction="#btnAddOnAction" prefHeight="46.0" prefWidth="106.0" style="-fx-background-color: #16476A; -fx-background-radius: 25;" text="Add">
+         <font>
+            <Font name="System Bold Italic" size="17.0" />
+         </font>
+         <textFill>
+            <LinearGradient endX="1.0" endY="1.0" startX="0.8106060461564498">
+               <stops>
+                  <Stop>
+                     <color>
+                        <Color red="1.0" green="1.0" blue="1.0" />
+                     </color>
+                  </Stop>
+                  <Stop offset="1.0">
+                     <color>
+                        <Color red="0.5894736647605896" green="0.5894736647605896" blue="0.5894736647605896" />
+                     </color>
+                  </Stop>
+               </stops>
+            </LinearGradient>
+         </textFill>
+         <effect>
+            <DropShadow offsetY="5.0">
+               <color>
+                  <Color opacity="0.7325227856636047" />
+               </color>
+            </DropShadow>
+         </effect>
+      </JFXButton>
+      <TableView fx:id="tblCustomer" layoutX="6.0" layoutY="314.0" prefHeight="346.0" prefWidth="860.0">
+        <columns>
+          <TableColumn fx:id="colCustomerId" prefWidth="66.39998054504395" text="ID" />
+          <TableColumn fx:id="colCustomerTitle" prefWidth="63.20001220703125" text=" Title" />
+            <TableColumn fx:id="colCustomerName" prefWidth="112.0" text="Customer Name" />
+            <TableColumn fx:id="colDOB" prefWidth="92.79995727539062" text="DOB" />
+            <TableColumn fx:id="colSalary" prefWidth="96.00006103515625" text="Salary" />
+            <TableColumn fx:id="colAddress" prefWidth="148.0" text="Address" />
+            <TableColumn fx:id="colCity" prefWidth="105.59991455078125" text="City" />
+            <TableColumn fx:id="colProvince" prefWidth="108.0" text="Province" />
+            <TableColumn fx:id="colPostalCode" prefWidth="55.20001220703125" text="Postal Code" />
+        </columns>
+      </TableView>
+      <JFXTextField fx:id="txtCustomerId" layoutX="39.0" layoutY="90.0" prefHeight="26.0" prefWidth="178.0" promptText="Customer Id" style="-fx-background-color: #fffefe;" unFocusColor="#ffffff00">
+         <font>
+            <Font name="System Bold" size="12.0" />
+         </font>
+      </JFXTextField>
+      <DatePicker fx:id="dpDateOfBirth" editable="true" layoutX="358.0" layoutY="91.0" promptText="Date Of Birth" />
+      <ComboBox fx:id="cmbProvince" layoutX="666.0" layoutY="142.0" prefWidth="150.0" promptText="Province" />
+      <JFXTextField fx:id="txtCustomerName" layoutX="39.0" layoutY="186.0" prefHeight="26.0" prefWidth="178.0" promptText="Customer Name" style="-fx-background-color: #fffefe;" unFocusColor="#ffffff00">
+         <font>
+            <Font name="System Bold" size="12.0" />
+         </font>
+      </JFXTextField>
+      <JFXTextField fx:id="txtSalary" layoutX="356.0" layoutY="141.0" prefHeight="26.0" prefWidth="178.0" promptText="Salary" style="-fx-background-color: #fffefe;" unFocusColor="#ffffff00">
+         <font>
+            <Font name="System Bold" size="12.0" />
+         </font>
+      </JFXTextField>
+      <JFXTextField fx:id="txtAddress" layoutX="356.0" layoutY="184.0" prefHeight="26.0" prefWidth="178.0" promptText="First Name" style="-fx-background-color: #fffefe;" text="Address" unFocusColor="#ffffff00">
+         <font>
+            <Font name="System Bold" size="12.0" />
+         </font>
+      </JFXTextField>
+      <JFXTextField fx:id="txtCity" layoutX="666.0" layoutY="186.0" prefHeight="26.0" prefWidth="178.0" promptText="City" style="-fx-background-color: #fffefe;" unFocusColor="#ffffff00">
+         <font>
+            <Font name="System Bold" size="12.0" />
+         </font>
+      </JFXTextField>
+      <JFXTextField fx:id="txtPostalCode" layoutX="666.0" layoutY="90.0" prefHeight="26.0" prefWidth="178.0" promptText="Postal Code" style="-fx-background-color: #fffefe;" unFocusColor="#ffffff00">
+         <font>
+            <Font name="System Bold" size="12.0" />
+         </font>
+      </JFXTextField>
+      <ComboBox fx:id="cmbCustomerTitle" layoutX="39.0" layoutY="142.0" prefWidth="150.0" promptText="Customer Title" />
+      <Rectangle height="66.0" layoutX="2.0" layoutY="8.0" stroke="WHITE" strokeType="INSIDE" width="860.0">
          <fill>
             <LinearGradient endX="1.0" endY="1.0">
                <stops>
@@ -49,196 +228,10 @@
             </DropShadow>
          </effect>
       </Rectangle>
-      <Label alignment="CENTER" layoutX="376.0" layoutY="3.0" prefHeight="66.0" prefWidth="358.0" text="Customer Management" textFill="WHITE">
+      <Label alignment="CENTER" layoutX="294.0" layoutY="7.0" prefHeight="66.0" prefWidth="282.0" text="Customer Info" textFill="WHITE">
          <font>
             <Font name="System Bold" size="29.0" />
          </font>
       </Label>
-      <JFXButton layoutX="49.0" layoutY="255.0" onAction="#btnSearchOnAction" prefHeight="46.0" prefWidth="106.0" style="-fx-background-color: #16476A; -fx-background-radius: 25;" text="search">
-         <font>
-            <Font name="System Bold Italic" size="17.0" />
-         </font>
-         <textFill>
-            <LinearGradient endX="1.0" endY="1.0" startX="0.8106060461564498">
-               <stops>
-                  <Stop>
-                     <color>
-                        <Color red="1.0" green="1.0" blue="1.0" />
-                     </color>
-                  </Stop>
-                  <Stop offset="1.0">
-                     <color>
-                        <Color red="0.5894736647605896" green="0.5894736647605896" blue="0.5894736647605896" />
-                     </color>
-                  </Stop>
-               </stops>
-            </LinearGradient>
-         </textFill>
-         <effect>
-            <DropShadow offsetY="5.0">
-               <color>
-                  <Color opacity="0.7325227856636047" />
-               </color>
-            </DropShadow>
-         </effect>
-      </JFXButton>
-      <JFXButton layoutX="735.0" layoutY="254.0" onAction="#btnDeleteOnAction" prefHeight="46.0" prefWidth="106.0" style="-fx-background-color: #16476A; -fx-background-radius: 25;" text="Delete">
-         <font>
-            <Font name="System Bold Italic" size="17.0" />
-         </font>
-         <textFill>
-            <LinearGradient endX="1.0" endY="1.0" startX="0.8106060461564498">
-               <stops>
-                  <Stop>
-                     <color>
-                        <Color red="1.0" green="1.0" blue="1.0" />
-                     </color>
-                  </Stop>
-                  <Stop offset="1.0">
-                     <color>
-                        <Color red="0.5894736647605896" green="0.5894736647605896" blue="0.5894736647605896" />
-                     </color>
-                  </Stop>
-               </stops>
-            </LinearGradient>
-         </textFill>
-         <effect>
-            <DropShadow offsetY="5.0">
-               <color>
-                  <Color opacity="0.7325227856636047" />
-               </color>
-            </DropShadow>
-         </effect>
-      </JFXButton>
-      <JFXButton layoutX="945.0" layoutY="255.0" onAction="#btnReloadOnAction" prefHeight="46.0" prefWidth="106.0" style="-fx-background-color: #16476A; -fx-background-radius: 25;" text="Reload">
-         <font>
-            <Font name="System Bold Italic" size="17.0" />
-         </font>
-         <textFill>
-            <LinearGradient endX="1.0" endY="1.0" startX="0.8106060461564498">
-               <stops>
-                  <Stop>
-                     <color>
-                        <Color red="1.0" green="1.0" blue="1.0" />
-                     </color>
-                  </Stop>
-                  <Stop offset="1.0">
-                     <color>
-                        <Color red="0.5894736647605896" green="0.5894736647605896" blue="0.5894736647605896" />
-                     </color>
-                  </Stop>
-               </stops>
-            </LinearGradient>
-         </textFill>
-         <effect>
-            <DropShadow offsetY="5.0">
-               <color>
-                  <Color opacity="0.7325227856636047" />
-               </color>
-            </DropShadow>
-         </effect>
-      </JFXButton>
-      <JFXButton layoutX="502.0" layoutY="255.0" onAction="#btnUpdateOnAction" prefHeight="46.0" prefWidth="106.0" style="-fx-background-color: #16476A; -fx-background-radius: 25;" text="Update">
-         <font>
-            <Font name="System Bold Italic" size="17.0" />
-         </font>
-         <textFill>
-            <LinearGradient endX="1.0" endY="1.0" startX="0.8106060461564498">
-               <stops>
-                  <Stop>
-                     <color>
-                        <Color red="1.0" green="1.0" blue="1.0" />
-                     </color>
-                  </Stop>
-                  <Stop offset="1.0">
-                     <color>
-                        <Color red="0.5894736647605896" green="0.5894736647605896" blue="0.5894736647605896" />
-                     </color>
-                  </Stop>
-               </stops>
-            </LinearGradient>
-         </textFill>
-         <effect>
-            <DropShadow offsetY="5.0">
-               <color>
-                  <Color opacity="0.7325227856636047" />
-               </color>
-            </DropShadow>
-         </effect>
-      </JFXButton>
-      <JFXButton layoutX="270.0" layoutY="254.0" onAction="#btnAddOnAction" prefHeight="46.0" prefWidth="106.0" style="-fx-background-color: #16476A; -fx-background-radius: 25;" text="Add">
-         <font>
-            <Font name="System Bold Italic" size="17.0" />
-         </font>
-         <textFill>
-            <LinearGradient endX="1.0" endY="1.0" startX="0.8106060461564498">
-               <stops>
-                  <Stop>
-                     <color>
-                        <Color red="1.0" green="1.0" blue="1.0" />
-                     </color>
-                  </Stop>
-                  <Stop offset="1.0">
-                     <color>
-                        <Color red="0.5894736647605896" green="0.5894736647605896" blue="0.5894736647605896" />
-                     </color>
-                  </Stop>
-               </stops>
-            </LinearGradient>
-         </textFill>
-         <effect>
-            <DropShadow offsetY="5.0">
-               <color>
-                  <Color opacity="0.7325227856636047" />
-               </color>
-            </DropShadow>
-         </effect>
-      </JFXButton>
-      <TableView fx:id="tblCustomer" layoutX="24.0" layoutY="327.0" prefHeight="352.0" prefWidth="1051.0">
-        <columns>
-          <TableColumn fx:id="colCustomerId" prefWidth="86.40000915527344" text="Customer Id" />
-          <TableColumn fx:id="colCustomerTitle" prefWidth="119.99999237060547" text="Customer Title" />
-            <TableColumn fx:id="colCustomerName" prefWidth="123.19998168945312" text="Customer Name" />
-            <TableColumn fx:id="colDOB" prefWidth="82.39996337890625" text="DOB" />
-            <TableColumn fx:id="colSalary" prefWidth="108.80001831054688" text="Salary" />
-            <TableColumn fx:id="colAddress" prefWidth="235.99993896484375" text="Address" />
-            <TableColumn fx:id="colCity" prefWidth="84.800048828125" text="City" />
-            <TableColumn fx:id="colProvince" prefWidth="95.19989013671875" text="Province" />
-            <TableColumn fx:id="colPostalCode" prefWidth="87.20001220703125" text="Postal Code" />
-        </columns>
-      </TableView>
-      <JFXTextField fx:id="txtCustomerId" layoutX="138.0" layoutY="82.0" prefHeight="26.0" prefWidth="178.0" promptText="Customer Id" style="-fx-background-color: #fffefe;" unFocusColor="#ffffff00">
-         <font>
-            <Font name="System Bold" size="12.0" />
-         </font>
-      </JFXTextField>
-      <DatePicker fx:id="dpDateOfBirth" editable="true" layoutX="470.0" layoutY="83.0" promptText="Date Of Birth" />
-      <ComboBox fx:id="cmbProvince" layoutX="813.0" layoutY="198.0" prefWidth="150.0" promptText="Province" />
-      <JFXTextField fx:id="txtCustomerName" layoutX="138.0" layoutY="198.0" prefHeight="26.0" prefWidth="178.0" promptText="Customer Name" style="-fx-background-color: #fffefe;" unFocusColor="#ffffff00">
-         <font>
-            <Font name="System Bold" size="12.0" />
-         </font>
-      </JFXTextField>
-      <JFXTextField fx:id="txtSalary" layoutX="468.0" layoutY="137.0" prefHeight="26.0" prefWidth="178.0" promptText="Salary" style="-fx-background-color: #fffefe;" unFocusColor="#ffffff00">
-         <font>
-            <Font name="System Bold" size="12.0" />
-         </font>
-      </JFXTextField>
-      <JFXTextField fx:id="txtAddress" layoutX="468.0" layoutY="198.0" prefHeight="26.0" prefWidth="178.0" promptText="First Name" style="-fx-background-color: #fffefe;" text="Address" unFocusColor="#ffffff00">
-         <font>
-            <Font name="System Bold" size="12.0" />
-         </font>
-      </JFXTextField>
-      <JFXTextField fx:id="txtCity" layoutX="799.0" layoutY="137.0" prefHeight="26.0" prefWidth="178.0" promptText="City" style="-fx-background-color: #fffefe;" unFocusColor="#ffffff00">
-         <font>
-            <Font name="System Bold" size="12.0" />
-         </font>
-      </JFXTextField>
-      <JFXTextField fx:id="txtPostalCode" layoutX="799.0" layoutY="82.0" prefHeight="26.0" prefWidth="178.0" promptText="Postal Code" style="-fx-background-color: #fffefe;" unFocusColor="#ffffff00">
-         <font>
-            <Font name="System Bold" size="12.0" />
-         </font>
-      </JFXTextField>
-      <ComboBox fx:id="cmbCustomerTitle" layoutX="138.0" layoutY="138.0" prefWidth="150.0" promptText="Customer Title" />
    </children>
 </AnchorPane>

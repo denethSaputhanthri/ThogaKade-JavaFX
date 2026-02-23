@@ -6,6 +6,7 @@ import repository.custom.CustomerRepository;
 import service.custom.CustomerService;
 import util.RepositoryType;
 
+import java.util.ArrayList;
 import java.util.List;
 
 public class CustomerServiceImpl implements CustomerService {
@@ -32,7 +33,17 @@ public class CustomerServiceImpl implements CustomerService {
     }
 
     @Override
-    public boolean searchById(String id) {
-        return false;
+    public Customer searchById(String id) {
+        return repository.searchById(id);
+    }
+
+    @Override
+    public List<String> getAllCustomerIDs() {
+        List<Customer> all = getAll();
+        ArrayList<String>idList=new ArrayList<>();
+        all.forEach(customer -> {
+            idList.add(customer.getCustomerId());
+        });
+        return idList;
     }
 }
