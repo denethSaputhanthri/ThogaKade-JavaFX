@@ -120,7 +120,9 @@ public class OrderDetailsFormController implements Initializable {
 
     private void setItemDataTable(String itemCode) {
         Item item = itemService.searchById(itemCode);
-        System.out.println(item);
+        txtItemCode.setText(item.getItemCode());
+        txtDescription.setText(item.getDescription());
+        txtUnitPrice.setText(String.valueOf(item.getUnitPrice()));
     }
 
     private void loadItemCodes() {
