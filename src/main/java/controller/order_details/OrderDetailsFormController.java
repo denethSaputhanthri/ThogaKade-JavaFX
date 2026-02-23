@@ -11,9 +11,11 @@ import javafx.scene.control.TableColumn;
 import javafx.scene.control.TableView;
 import javafx.scene.control.TextField;
 import javafx.scene.input.KeyEvent;
+import model.dto.Item;
 import model.entity.Customer;
 import service.ServiceFactory;
 import service.custom.CustomerService;
+import service.custom.ItemService;
 import util.ServiceType;
 
 import java.net.URL;
@@ -22,9 +24,10 @@ import java.util.ResourceBundle;
 
 public class OrderDetailsFormController implements Initializable {
     CustomerService customerService =ServiceFactory.getInstance().getServiceType(ServiceType.CUSTOMER);
+    ItemService itemService = ServiceFactory.getInstance().getServiceType(ServiceType.ITEM);
 
     @FXML
-    private JFXButton btnPlaceOrderOnAction;
+    private JFXComboBox cmbItemCode;
 
     @FXML
     private JFXComboBox cmbCustomerId;
@@ -104,10 +107,17 @@ public class OrderDetailsFormController implements Initializable {
     @Override
     public void initialize(URL url, ResourceBundle resourceBundle) {
         loadCustomerIDs();
+        loadItemCodes();
         cmbCustomerId.getSelectionModel().selectedItemProperty().addListener((observableValue, oldValue, newValue) -> {
           assert newValue != null;
           setCustomerDataTable((String) newValue);
         });
+
+    }
+
+    private void loadItemCodes() {
+        List<String> allItemCode = itemService.getAllItemCode();
+        cmbItemCode.setItems(FXCollections.observableArrayList(allItemCode));
     }
 
     private void setCustomerDataTable(String id) {
@@ -120,4 +130,5 @@ public class OrderDetailsFormController implements Initializable {
         List<String> customerIDs = customerService.getAllCustomerIDs();
         cmbCustomerId.setItems(FXCollections.observableArrayList(customerIDs));
     }
+
 }

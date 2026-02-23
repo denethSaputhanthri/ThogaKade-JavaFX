@@ -6,6 +6,7 @@ import repository.custom.ItemRepository;
 import service.custom.ItemService;
 import util.RepositoryType;
 
+import java.util.ArrayList;
 import java.util.List;
 
 public class ItemServiceImpl implements ItemService {
@@ -32,7 +33,17 @@ public class ItemServiceImpl implements ItemService {
     }
 
     @Override
-    public Boolean searchById(String itemCode) {
-        return searchById(itemCode);
+    public Item searchById(String itemCode) {
+        return repository.searchById(itemCode);
+    }
+
+    @Override
+    public List<String> getAllItemCode() {
+        List<Item> all = getAll();
+        ArrayList<String>itemCodeList=new ArrayList<>();
+        all.forEach(item -> {
+            itemCodeList.add(item.getItemCode());
+        });
+        return itemCodeList;
     }
 }
