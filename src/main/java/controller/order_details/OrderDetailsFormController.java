@@ -11,6 +11,7 @@ import javafx.scene.control.TableColumn;
 import javafx.scene.control.TableView;
 import javafx.scene.control.TextField;
 import javafx.scene.input.KeyEvent;
+import model.entity.Customer;
 import service.ServiceFactory;
 import service.custom.CustomerService;
 import util.ServiceType;
@@ -103,14 +104,20 @@ public class OrderDetailsFormController implements Initializable {
     @Override
     public void initialize(URL url, ResourceBundle resourceBundle) {
         loadCustomerIDs();
-
+        cmbCustomerId.getSelectionModel().selectedItemProperty().addListener((observableValue, oldValue, newValue) -> {
+          assert newValue != null;
+          setCustomerDataTable((String) newValue);
+        });
     }
 
+    private void setCustomerDataTable(String id) {
+        Customer customer = customerService.searchById(id);
+        txtCustomerName.setText(customer.getCustomerName());
+        txtCity.setText(customer.getCity());
+    }
 
     private void loadCustomerIDs(){
         List<String> customerIDs = customerService.getAllCustomerIDs();
         cmbCustomerId.setItems(FXCollections.observableArrayList(customerIDs));
     }
-
-
 }
